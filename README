@@ -1,0 +1,76 @@
+********************************************************************************
+*                     Battle Golfer Yui Translation Project                    *
+********************************************************************************
+
+This is a set of tools and documentation used to produce the English translation patch for Battle Golfer Yui.
+
+********************************************************************************
+*                                 How to Use                                   *
+********************************************************************************
+
+Prebuilt Windows binaries are provided for the tools needed to build the translated ROM. To build the patched game, you will need a clean ROM image of Battle Golfer Yui (MD5 sum 8cfd0e5a169193cf9c66e6d237a45d77). Rename this ROM to "Battle Golfer Yui (J) [c][!].bin" and place it in the root folder of the project, then run build.bat. This should produce a new file, "Battle Golfer Yui (J) [c][!] (EN).bin", containing the translated ROM.
+
+********************************************************************************
+*                               Building Tools                                 *
+********************************************************************************
+
+Source code and Visual Studio projects are provided for most contained tools. Some tools that were used only for dumping game resources are not included in the Visual Studio projects, but can easily be added if desired. libpng is required for some tools in the new_tools directory; prebuilt Windows libraries are provided for convenience.
+
+It's also possible to build the tools in new_tools for Unix-like systems using the provided Makefiles.
+
+If you need to build a new Atlas binary, you must use the modified version found in src/atlas_src_spacefix. This version disables Atlas' behavior of throwing away lines containing only ASCII spaces. The translation will not build correctly with the stock version of Atlas.
+
+********************************************************************************
+*                               Tool Information                               *
+********************************************************************************
+
+Here's a brief overview of tools in the new_tools/yui/src directory. Run the programs with no arguments for invocation and other relevant information.
+
+datinjct             Tool to inject data into free spaces in ROM
+datpatch             Tool to write data to specific locations in ROM
+golfer_fontbuild     1bpp font builder
+golfer_fontrip       1bpp font extractor
+golfer_rle4cmp       Compressor for RLE4 graphics compression
+golfer_rle4decmp     Decompressor for RLE4 graphics compression
+golfer_tilemapbuild  Tool to convert standard VDP tilemaps to game format
+golfer_tilemaprip    Tool to convert game's tilemaps to standard VDP format
+grpdmp               Generic tool to convert data to graphics
+grpunmap             Tool to render VDP format tilemaps
+introrip             Cutscene text ripper
+maptext_dump         Specialized tool for extracting 16-bit tilemaps
+romprep              Tool that corrects ROM header after building
+scriptptr_dump       Produces extraction table for use with Guest's tools
+srecpatch            Patches an SREC-format file to another file
+tiledmp              Generic tool to convert data to graphics
+tilemapper           Converts raw images to pattern data and tilemaps
+tiletext_dump        Dumper for text contained in tilemaps
+tileundmp            Converts images produced by tiledmp to pattern data
+
+See the script "new_tools/yui/dump.sh" for information on where specific game assets are stored.
+
+Assembly language modifications to the game are found in the file new_tools/yui_hacks.asm.
+
+********************************************************************************
+*                            Licensing Information                             *
+********************************************************************************
+
+See COPYING for specifics, but this package is the products of multiple authors. Generally, the following people were responsible for the following parts of the project, and licensed their work under the terms listed:
+
+  Filler -- Creative Commons Non-Commerial Attribution (CC BY-NC)
+    * tools/text/script.txt
+
+  Guest -- no license?
+    * asm
+    * src/golfer_dumper
+    * src/golfer_packer
+    * tools (other than tools/text/script.txt)
+  
+  Klarth -- no license?
+    * src/atlas_src
+      * "src/atlas_src_spacefix" is a very slightly modified version of this, created by Supper.
+  
+  Supper -- GNU General Public License version 3 (GPLv3)
+    * build.bat
+    * new_tools
+    * New graphics found in the "resources" folder
+

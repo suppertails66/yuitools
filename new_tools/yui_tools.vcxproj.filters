@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="blackt\src\exception\TException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\exception\TGenericException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\ByteConversion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\ByteSizes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\EndiannessType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\MiscMath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\SignednessType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TBufStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TByte.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TCharFmt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TColor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TCoordPair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TCsv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TFileManip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TFolderManip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TFreeSpace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TGraphic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TIfstream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TIniFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TInputEventData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TInsertionSortedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TOfstream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TOpt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TPngConversion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TRect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TSerialize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TSptr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TStringConversion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TStringEncoding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TThingyTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TTransModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TTwoDArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blackt\src\util\TTwoDByteArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\Md.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\MdColor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\MdPalette.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\MdPaletteLine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\MdPattern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\MdTileId.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\MdTilemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\md\MdVram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\yui\YuiFont.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\yui\YuiFontChar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\yui\YuiRle4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmd\src\yui\YuiTilemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blackt\src\exception\TException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\exception\TGenericException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\utf8\checked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\utf8\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\utf8\unchecked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\ByteConversion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\ByteSizes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\EndiannessType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\MiscMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\SignednessType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TBufStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TByte.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TCharFmt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TCoordPair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TCsv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TFileManip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TFolderManip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TFreeSpace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TGraphic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TIfstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TIniFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TInputEventData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TInsertionSortedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TOfstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TOpt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TPngConversion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TRect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TSerialize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TSptr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TStringConversion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TStringEncoding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TThingyTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TTransModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TTwoDArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\TTwoDByteArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blackt\src\util\utf8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\Md.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\MdColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\MdPalette.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\MdPaletteLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\MdPattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\MdTileId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\MdTilemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\md\MdVram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\yui\YuiFont.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\yui\YuiFontChar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\yui\YuiRle4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmd\src\yui\YuiTilemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="yui\pal\yui_pal_adv.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="yui\pal\yui_pal_adv_line0.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="yui\pal\yui_pal_adv_line1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="yui\pal\yui_pal_adv_line2.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="yui\pal\yui_pal_adv_line3.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="yui\font_1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

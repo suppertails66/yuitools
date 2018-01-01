@@ -1,0 +1,18 @@
+linear
+
+
+macro MSB32(x)
+db <x>>>24, <x>>>16, <x>>>8, <x>>>0
+endmacro
+
+macro MSB16(x)
+db <x>>>8, <x>>>0
+endmacro
+
+;%MSB32(CINEMA_ENGLISH_FONT)
+;%MSB16($4E00+$4)
+
+
+org $2f0d2
+incbin insert/title.bin
+warnpc $30573+1

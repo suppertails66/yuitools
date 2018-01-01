@@ -1,0 +1,50 @@
+#******************************************************************************
+# Title screen
+#******************************************************************************
+
+[TitleScreenTiles]
+source=out/rle4/title_grp.bin
+origPos=0x2f0d2
+origSize=0x14a1
+pointers=0x195e
+
+[TitleScreenFlame1]
+source=out/maps_conv/title_map_5.bin
+origPos=0x44020
+origSize=0x28
+pointers=0x1AAE 0x1BB8
+
+[TitleScreenFlame2]
+source=out/maps_conv/title_map_6.bin
+origPos=0x44048
+origSize=0x28
+pointers=0x1BBC
+
+[TitleScreenFlame3]
+source=out/maps_conv/title_map_7.bin
+origPos=0x44070
+origSize=0x28
+pointers=0x1BC0
+
+[TitleScreenFlame4]
+source=out/maps_conv/title_map_8.bin
+origPos=0x44098
+origSize=0x28
+pointers=0x1BC4
+
+[TitleScreenYui]
+source=out/maps_conv/title_map_4.bin
+origPos=0x43fe8
+origSize=0x38
+pointers=0x1A90
+
+#******************************************************************************
+# Sidebar logo
+#******************************************************************************
+
+[SidebarLogoTiles]
+source=out/rle4/sidebar_logo_grp.bin
+origPos=0x30574
+origSize=0x322
+pointers=0x4784 0x651a
+

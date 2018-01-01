@@ -1,0 +1,23 @@
+#******************************************************************************
+# Title screen tilemap generator script
+#******************************************************************************
+
+[Properties]
+palette=../resources/pal/yui_pal_adv.bin
+dest=out/precmp/sidebar_logo_grp.bin
+loadAddr=0xBA
+#minTiles=0x0
+maxTiles=0x21
+#blacklist=
+
+#******************************************************************************
+# Main layout
+#******************************************************************************
+
+[Tilemap00]
+source=../resources/grp_mapped/adv/trans/0x440c0.png
+dest=out/maps_raw/sidebar_logo_map.bin
+priority=0
+palette=1
+noflip=1
+

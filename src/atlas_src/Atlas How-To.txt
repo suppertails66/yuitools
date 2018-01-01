@@ -1,0 +1,187 @@
+Atlas v1.06
+By Klarth (stevemonaco@hotmail.com)
+http://rpgd.emulationworld.com/klarth/
+
+Quick Solutions
+
+1. A Simple Atlas File
+2. Creating a Custom Pointer Type
+3. Creating and Using Pointer Tables
+4. Creating and Using Pointer Lists
+5. Using Autowrite
+6. Using Embedded Pointers
+
+
+1. A Simple Atlas File
+
+// Define a TABLE
+#VAR(Table, TABLE)
+
+// Load and activate the table
+#ADDTBL("MyTable.tbl", Table)
+#ACTIVETBL(Table)
+
+// Set a header of $200 bytes, size of a SNES ROM header.
+// The header only affects values of pointers
+#HDR($200)
+
+// Say we're dealing with a HIROM addressing mode
+#SMA("HIROM")
+
+// Start of the script is at $40200 in the ROM
+#JMP($40200)
+
+// 24bit Pointer table starts at $50200
+#W24($50200)
+
+Hi, how may I help<line>
+you today?<end>
+
+// Write next pointer
+#W24($50203)
+
+// End script
+
+
+
+2. Creating a Custom Pointer Type
+
+   In order to have pointers that are offsetted, you must create a custom pointer.
+   For example, if we want to create a 16bit gameboy-addressed pointer that subtracts $1000, we do this:
+
+   #VAR(MyPtr, CUSTOMPOINTER)
+   #CREATEPTR(MyPtr, "GB", $1000, 16)
+
+   To write this pointer to at position $60000 in the file, we do this:
+
+   #WRITE(MyPtr, $60000)
+   Here's the text.<end>
+
+
+
+3. Creating and Using Pointer Tables
+
+   Our game has a 24bit LOROM80 pointer (SNES), where the pointer adds $1000 to itself.  The pointer table
+   starts at $50200.  Let's tackle this problem with Atlas.
+
+   #VAR(MyPtr, CUSTOMPOINTER)
+   #VAR(PtrTable, POINTERTABLE)
+   // Create our pointer type
+   #CREATEPTR(MyPtr, "LOROM80", $-1000, 24)
+   // Create the pointer table
+   #PTRTBL(PtrTable, $50200, 3, MyPtr)
+
+   // Some sample text
+
+   // Write the first pointer to $50200
+   #WRITE(PtrTable)
+   Pardon me, would you happen<line>
+   to have dropped this?<end>
+
+   // Write second pointer to $50203
+   #WRITE(PtrTable)
+   Where did my wallet go?<end>
+
+   And that's all there is to it.
+
+
+
+4. Creating and Using Pointer Lists
+
+   Say we come across a game whose pointers are not in any particular order for the text strings.
+   First, we must create a file for pointer lists containing where the pointers are located at.
+
+   Offsets.txt:
+
+   $60000
+   $60002
+   $60004
+   $40000
+   $40002
+   $40004
+
+   Now that we have our pointer list, we can create a custom pointer, then a pointer list.
+
+   #VAR(MyPtr, CUSTOMPOINTER)
+   #VAR(MyList, POINTERLIST)
+   // Standard 16bit HIROM pointer
+   #CREATEPTR(MyPtr, "HIROM", $0, 16)
+   #PTRLIST(MyList, "Offsets.txt", MyPtr)
+
+   // Our pointer list is now created.  Now here is some sample text:
+
+   // Write first pointer at $60000
+   #WRITE(MyList)
+   Hi, sure is a nice, breezy<line>
+   day out, isn't it?<end>
+
+   // Write second pointer at $60002
+   #WRITE(MyList)
+   Welcome to our shop, what<line>
+   would you like to purchase?<end>
+
+   And so on.
+
+
+
+5. Using Autowrite
+
+   Autowrite is one of the features of Atlas that removes a LOT of the commands from the script,
+   so use it when possible.
+
+   Say we have an initialized POINTERTABLE or POINTERLIST called Ptrs.  After every string, we
+   have <end> as our end token.  To set up an autowrite, we do this:
+
+   First, if you haven't (you should anyways), add the end token to your table like so:
+   /<end>
+   Or if it has a value, say 00
+   /00=<end>
+
+   Next, we activate Ptrs with autowrite:
+
+   #AUTOWRITE(Ptrs, "<end>")
+
+   That's all there is to it, besides disabling it.  Here's some sample text following AUTOWRITE:
+
+   // Wrote the first pointer automatically
+   Don't you think that Atlas<line>
+   is neat when you get used <line>
+   to it?<end>
+   // Write the second pointer automatically
+
+   #DISABLE(Ptrs, "<end>"
+   Finally, a decent text inserter<line>
+   for romhackers to use<end>
+
+   // AUTOWRITE is disabled for Ptrs / <end>, pointer is NOT written here
+
+
+6. Using Embedded Pointers
+
+   Embedded pointers are complicated things to handle in scripts.  Say we have some sample text like:
+
+     Have you retrieved the Holy Plunger yet?
+     <$01><$00><$40>
+     You have, that's great!<end>
+     You haven't?  Get back out there and get it!<end>
+
+   This is an example of some conditional text.  <$01> tests some flag (if you have the Holy Plunger)
+   and is then redirected to some other text if you don't.
+
+   This can also be solved with Atlas.
+
+   Say the pointer is a normal 16bit LOROM pointer.
+
+     #SMA("LOROM00")
+     #EMBTYPE(16, $0)
+
+     Have you retrieved the Holy Plunger yet?
+     <$01>
+     // Save the address of the pointer
+     #EMBSET(0)
+     You have, that's great!<end>
+     // Embedded pointer 0 points here, the false text
+     #EMBWRITE(0)
+     You haven't?  Get back out there and get it!<end>
+
+     You can also #EMBWRITE a pointer before #EMBSET.  Reusing embedded pointers is not recommended.

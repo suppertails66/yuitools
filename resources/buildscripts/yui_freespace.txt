@@ -1,0 +1,5 @@
+# Use the second half of the free space given by expanding the ROM,
+# with the first half reserved for externally injected scripts
+[0xc0000]
+size=0x40000
+

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{979EE892-55EF-4E72-A403-9741AF0C0AF8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>yui_tools</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>blackt/lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>blackt/lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>BLACKT_ENABLE_LIBPNG;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>blackt/src;libmd/src</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>BLACKT_ENABLE_LIBPNG;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>blackt/src;libmd/src</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="blackt\src\exception\TException.cpp" />
+    <ClCompile Include="blackt\src\exception\TGenericException.cpp" />
+    <ClCompile Include="blackt\src\util\ByteConversion.cpp" />
+    <ClCompile Include="blackt\src\util\ByteSizes.cpp" />
+    <ClCompile Include="blackt\src\util\EndiannessType.cpp" />
+    <ClCompile Include="blackt\src\util\MiscMath.cpp" />
+    <ClCompile Include="blackt\src\util\SignednessType.cpp" />
+    <ClCompile Include="blackt\src\util\TArray.cpp" />
+    <ClCompile Include="blackt\src\util\TBufStream.cpp" />
+    <ClCompile Include="blackt\src\util\TByte.cpp" />
+    <ClCompile Include="blackt\src\util\TCharFmt.cpp" />
+    <ClCompile Include="blackt\src\util\TColor.cpp" />
+    <ClCompile Include="blackt\src\util\TCoordPair.cpp" />
+    <ClCompile Include="blackt\src\util\TCsv.cpp" />
+    <ClCompile Include="blackt\src\util\TFileManip.cpp" />
+    <ClCompile Include="blackt\src\util\TFolderManip.cpp" />
+    <ClCompile Include="blackt\src\util\TFreeSpace.cpp" />
+    <ClCompile Include="blackt\src\util\TGraphic.cpp" />
+    <ClCompile Include="blackt\src\util\TIfstream.cpp" />
+    <ClCompile Include="blackt\src\util\TIniFile.cpp" />
+    <ClCompile Include="blackt\src\util\TInputEventData.cpp" />
+    <ClCompile Include="blackt\src\util\TInsertionSortedList.cpp" />
+    <ClCompile Include="blackt\src\util\TOfstream.cpp" />
+    <ClCompile Include="blackt\src\util\TOpt.cpp" />
+    <ClCompile Include="blackt\src\util\TPngConversion.cpp" />
+    <ClCompile Include="blackt\src\util\TRect.cpp" />
+    <ClCompile Include="blackt\src\util\TSerialize.cpp" />
+    <ClCompile Include="blackt\src\util\TSptr.cpp" />
+    <ClCompile Include="blackt\src\util\TStream.cpp" />
+    <ClCompile Include="blackt\src\util\TString.cpp" />
+    <ClCompile Include="blackt\src\util\TStringConversion.cpp" />
+    <ClCompile Include="blackt\src\util\TStringEncoding.cpp" />
+    <ClCompile Include="blackt\src\util\TThingyTable.cpp" />
+    <ClCompile Include="blackt\src\util\TTransModel.cpp" />
+    <ClCompile Include="blackt\src\util\TTwoDArray.cpp" />
+    <ClCompile Include="blackt\src\util\TTwoDByteArray.cpp" />
+    <ClCompile Include="libmd\src\md\Md.cpp" />
+    <ClCompile Include="libmd\src\md\MdColor.cpp" />
+    <ClCompile Include="libmd\src\md\MdPalette.cpp" />
+    <ClCompile Include="libmd\src\md\MdPaletteLine.cpp" />
+    <ClCompile Include="libmd\src\md\MdPattern.cpp" />
+    <ClCompile Include="libmd\src\md\MdTileId.cpp" />
+    <ClCompile Include="libmd\src\md\MdTilemap.cpp" />
+    <ClCompile Include="libmd\src\md\MdVram.cpp" />
+    <ClCompile Include="libmd\src\yui\YuiFont.cpp" />
+    <ClCompile Include="libmd\src\yui\YuiFontChar.cpp" />
+    <ClCompile Include="libmd\src\yui\YuiRle4.cpp" />
+    <ClCompile Include="libmd\src\yui\YuiTilemap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blackt\src\exception\TException.h" />
+    <ClInclude Include="blackt\src\exception\TGenericException.h" />
+    <ClInclude Include="blackt\src\util\ByteConversion.h" />
+    <ClInclude Include="blackt\src\util\ByteSizes.h" />
+    <ClInclude Include="blackt\src\util\EndiannessType.h" />
+    <ClInclude Include="blackt\src\util\MiscMath.h" />
+    <ClInclude Include="blackt\src\util\SignednessType.h" />
+    <ClInclude Include="blackt\src\util\TArray.h" />
+    <ClInclude Include="blackt\src\util\TBufStream.h" />
+    <ClInclude Include="blackt\src\util\TByte.h" />
+    <ClInclude Include="blackt\src\util\TCharFmt.h" />
+    <ClInclude Include="blackt\src\util\TColor.h" />
+    <ClInclude Include="blackt\src\util\TCoordPair.h" />
+    <ClInclude Include="blackt\src\util\TCsv.h" />
+    <ClInclude Include="blackt\src\util\TFileManip.h" />
+    <ClInclude Include="blackt\src\util\TFolderManip.h" />
+    <ClInclude Include="blackt\src\util\TFreeSpace.h" />
+    <ClInclude Include="blackt\src\util\TGraphic.h" />
+    <ClInclude Include="blackt\src\util\TIfstream.h" />
+    <ClInclude Include="blackt\src\util\TIniFile.h" />
+    <ClInclude Include="blackt\src\util\TInputEventData.h" />
+    <ClInclude Include="blackt\src\util\TInsertionSortedList.h" />
+    <ClInclude Include="blackt\src\util\TOfstream.h" />
+    <ClInclude Include="blackt\src\util\TOpt.h" />
+    <ClInclude Include="blackt\src\util\TPngConversion.h" />
+    <ClInclude Include="blackt\src\util\TRect.h" />
+    <ClInclude Include="blackt\src\util\TSerialize.h" />
+    <ClInclude Include="blackt\src\util\TSptr.h" />
+    <ClInclude Include="blackt\src\util\TStream.h" />
+    <ClInclude Include="blackt\src\util\TString.h" />
+    <ClInclude Include="blackt\src\util\TStringConversion.h" />
+    <ClInclude Include="blackt\src\util\TStringEncoding.h" />
+    <ClInclude Include="blackt\src\util\TThingyTable.h" />
+    <ClInclude Include="blackt\src\util\TTransModel.h" />
+    <ClInclude Include="blackt\src\util\TTwoDArray.h" />
+    <ClInclude Include="blackt\src\util\TTwoDByteArray.h" />
+    <ClInclude Include="blackt\src\util\utf8.h" />
+    <ClInclude Include="blackt\src\util\utf8\checked.h" />
+    <ClInclude Include="blackt\src\util\utf8\core.h" />
+    <ClInclude Include="blackt\src\util\utf8\unchecked.h" />
+    <ClInclude Include="libmd\src\md\Md.h" />
+    <ClInclude Include="libmd\src\md\MdColor.h" />
+    <ClInclude Include="libmd\src\md\MdPalette.h" />
+    <ClInclude Include="libmd\src\md\MdPaletteLine.h" />
+    <ClInclude Include="libmd\src\md\MdPattern.h" />
+    <ClInclude Include="libmd\src\md\MdTileId.h" />
+    <ClInclude Include="libmd\src\md\MdTilemap.h" />
+    <ClInclude Include="libmd\src\md\MdVram.h" />
+    <ClInclude Include="libmd\src\yui\YuiFont.h" />
+    <ClInclude Include="libmd\src\yui\YuiFontChar.h" />
+    <ClInclude Include="libmd\src\yui\YuiRle4.h" />
+    <ClInclude Include="libmd\src\yui\YuiTilemap.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="yui\font_1.bin" />
+    <None Include="yui\pal\yui_pal_adv.bin" />
+    <None Include="yui\pal\yui_pal_adv_line0.bin" />
+    <None Include="yui\pal\yui_pal_adv_line1.bin" />
+    <None Include="yui\pal\yui_pal_adv_line2.bin" />
+    <None Include="yui\pal\yui_pal_adv_line3.bin" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

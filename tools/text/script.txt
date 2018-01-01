@@ -1,0 +1,8223 @@
+
+//==============================================================================
+// Battle Golfer Yui script. Use with the Atlas script insertion tool.
+// 
+// This expands the ROM to 1MB. Here's a breakdown of how the space is
+// allocated:
+// 
+//   * 0x80000-0x8FFFF: Adventure mode script, part 1
+//   * 0x90000-0x9FFFF: Adventure mode script, part 2
+//   * 0xA0000-0xFFFFF: Everything else
+//
+// Some menus and other data are overwritten at their original locations.
+//==============================================================================
+
+#VAR(Table, TABLE)
+#ADDTBL("table//golfer_table.txt", Table)
+#ACTIVETBL(Table)
+
+#SMA("MSB32")
+
+#EMBTYPE("MSB32",32,$0)
+
+#VAR(MyPtr, CUSTOMPOINTER)
+#VAR(PtrTable, POINTERTABLE)
+
+#CREATEPTR(MyPtr, "MSB16", $-80000, 16)
+
+//---------------------------------------------------------
+//---------------------------------------------------------
+
+#SETINDEX($0000,2)
+
+#JMP($FFFFF)
+<$00>
+
+//==============================================================================
+// Main script, part 1.
+// 
+// The adventure mode script is split up across two pointer tables. The first
+// table forms part 1 (relocated to 0x80000), while the second is part 2 (at
+// 0x90000).
+//==============================================================================
+
+
+#JMP($80000)
+#PTRTBL(PtrTable, $80000, 2, MyPtr)
+#W32($B400)
+#W32($B406)
+
+#JMP($8034C)
+
+
+//[01BD30 = 0000]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $0)
+Yui arrives at Ghyll<LINE>
+Country Club.<STOP E5>
+
+
+
+//[01BD48 = 0001]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2)
+I suspect coming here<LINE>
+will provide me with<LINE>
+some answers.<STOP E5>
+
+
+
+//[01BD5E = 0002]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $4)
+Yui decides to go<LINE>
+inside.<CHOICE E4>
+
+
+
+//[01BD70 = 0003]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $6)
+Welcome.<CHOICE E4>
+
+
+
+//[01BD7A = 0004]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $8)
+Um...<STOP E5>
+
+
+
+//[01BD80 = 0005]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $A)
+Ms. Mizuhara, I<LINE>
+presume?<STOP E5>
+
+
+
+//[01BD8E = 0006]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $C)
+Yes.<STOP E5>
+
+
+
+//[01BD92 = 0007]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $E)
+I'm this club's<LINE>
+messenger. You've been
+entrusted to me.<CHOICE E4>
+
+
+
+//[01BDC0 = 0008]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $10)
+<CODE B0>Check what?<CHOICE E4>
+
+
+
+//[01BDD0 = 0009]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $12)
+She looks like some<LINE>
+sort of disco dancer.<CHOICE E4>
+
+
+
+//[01BDE6 = 000A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $14)
+Something doesn't feel
+right.<CHOICE E4>
+
+
+
+//[01BDF4 = 000B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $16)
+<CODE B0>Thinking about it<LINE>
+won't get me<LINE>
+anywhere.<CHOICE E4>
+
+
+
+//[01BE08 = 000C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $18)
+You're in charge of me
+why?<STOP E5>
+
+
+
+//[01BE18 = 000D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1A)
+You've been entered<LINE>
+into a different<LINE>
+tournament.<STOP E5>
+
+
+
+//[01BE34 = 000E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1C)
+Different how?<STOP E5>
+
+
+
+//[01BE42 = 000F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1E)
+Allow me to explain<LINE>
+about the match.<LINE>
+You'll compete for 3<LINE>
+holes via match play.<LINE>
+Evens count as a<LINE>
+loss.<STOP E5>
+
+
+
+//[01BE8C = 0010]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $20)
+<CODE B0>Seriously? That's so<LINE>
+strict.<STOP E5>
+
+
+
+//[01BE9A = 0011]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $22)
+I should have<LINE>
+mentioned earlier.<LINE>
+I'll provide your<LINE>
+caddie service. My<LINE>
+name is Tomoko Okui.<STOP E5>
+
+
+
+//[01BED8 = 0012]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $24)
+Hey, wait a minute!<STOP E5>
+
+
+
+//[01BEE4 = 0013]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $28)
+#WRITEOFS(PtrTable, $26)
+Yui is ushered to the<LINE>
+course.<CHOICE E4>
+
+
+
+//[01BEFA = 0015]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2A)
+<CODE B0>H-Hoshi!<STOP E5>
+
+
+
+//[01BF04 = 0016]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2C)
+W-What's with this<LINE>
+guy?!<STOP E5>
+
+
+
+//[01BF0E = 0017]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2E)
+Hoshi! It's me!<LINE>
+Your eternal rival<LINE>
+Mitsuru Hagata!<CHOICE E4>
+
+
+
+//[01BF38 = 0018]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $30)
+<CODE B0>Excuse me.<LINE>
+My name is Yui<LINE>
+Mizuhara! I don't know
+any 'Hoshi'!<STOP E5>
+
+
+
+//[01BF64 = 0019]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $32)
+No! You're Hoshi!<LINE>
+You are! I'm certain<LINE>
+of it!<CHOICE E4>
+
+
+
+//[01BF86 = 001A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $34)
+<CODE B0>Who is this guy?<CHOICE E4>
+
+
+
+//[01BF90 = 001B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $36)
+<CODE B0>Yay. A golf course!<CHOICE E4>
+
+
+
+//[01BFA4 = 001C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $38)
+<CODE B0>Agh, this is making my
+head hurt.<CHOICE E4>
+
+
+
+//[01BFB4 = 001D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $3A)
+<CODE B0>Ask about what?<CHOICE E4>
+
+
+
+//[01BFC0 = 001E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $3C)
+Do you know anything<LINE>
+about Ran Ryuzaki?<STOP E5>
+
+
+
+//[01BFDC = 001F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $3E)
+Akiko?<LINE>
+She's so beautiful!<LINE>
+-blush-<STOP E5>
+
+
+
+//[01BFF8 = 0020]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $40)
+<CODE B0>That's not what I<LINE>
+meant!<CHOICE E4>
+
+
+
+//[01C000 = 0021]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $42)
+<CODE B0>Have you heard of Dark
+Hazzard?<STOP E5>
+
+
+
+//[01C016 = 0022]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $44)
+Hmph.<LINE>
+With my skills this<LINE>
+year I'll have you<LINE>
+witness my victory at<LINE>
+Tyson's!<STOP E5>
+
+
+
+//[01C042 = 0023]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $46)
+<CODE B0>Are you trying to get<LINE>
+punched?!<LINE>
+Seriously...<CHOICE E4>
+
+
+
+//[01C056 = 0024]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $48)
+<CODE B0>I don't have time to<LINE>
+play around with you!<STOP E5>
+
+
+
+//[01C072 = 0025]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $4A)
+You running away?<LINE>
+Are you fleeing, heed-
+less of your eternal<LINE>
+rival?!<CHOICE E4>
+
+
+
+//[01C096 = 0026]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $4C)
+<CODE B0>Could this guy be...<LINE>
+A battle golfer!<CHOICE E4>
+
+
+
+//[01C0BA = 0027]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $4E)
+<CODE B0>Jeez! Well then what<LINE>
+should I do!<STOP E5>
+
+
+
+//[01C0D0 = 0028]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $50)
+Indeed. How about<LINE>
+being a good girl and<LINE>
+receiving your brain<LINE>
+modification!<STOP E5>
+
+
+
+//[01C0F6 = 0029]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $52)
+<CODE B0>I knew it! You are a<LINE>
+battle golfer!<CHOICE E4>
+
+
+
+//[01C110 = 002A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $54)
+Accursed traitor!<LINE>
+Go ahead and rot away<LINE>
+right here! Black<LINE>
+Fire!<STOP E5>
+
+
+
+//[01C138 = 002B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $56)
+<CODE B0>You will be burned<LINE>
+with black flames.<CHOICE E4>
+
+
+
+//[01C14C = 002C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $58)
+Good-bye, Yui!<STOP E5>
+
+
+
+//[01C158 = 002D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $5A)
+Yui reigns over a<LINE>
+world of darkness as a
+battle golfer of Dark<LINE>
+Hazzard.<CHOICE E4>
+
+
+
+//[01C188 = 002E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $5C)
+<CODE B0>I win.<STOP E5>
+
+
+
+//[01C192 = 002F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $5E)
+Splendid, Hoshi!<LINE>
+Attagirl. That's my <LINE>
+eternal rival!<CHOICE E4>
+
+
+
+//[01C1BA = 0030]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $60)
+<CODE B0>Don't mess with me!<LINE>
+Come on. Tell me<LINE>
+everything you know.<STOP E5>
+
+
+
+//[01C1DC = 0031]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $62)
+-sigh- What is it?<CHOICE E4>
+
+
+
+//[01C1E8 = 0032]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $64)
+<CODE B0>There is no point in<LINE>
+investigating.<CHOICE E4>
+
+
+
+//[01C1F6 = 0033]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $66)
+<CODE B0>I know you know about<LINE>
+Ran! Where is she?!<STOP E5>
+
+
+
+//[01C20A = 0034]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $68)
+Hmm. I don't know.<CHOICE E4>
+
+
+
+//[01C216 = 0035]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $6A)
+<CODE B0>What is this 'Dark<LINE>
+Hazzard'?<STOP E5>
+
+
+
+//[01C22A = 0036]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $6C)
+I... don't know.<CHOICE E4>
+
+
+
+//[01C236 = 0037]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $6E)
+<CODE B0>Screw you!<STOP E5>
+
+
+
+//[01C240 = 0038]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $70)
+<CODE B0>Ooo, how won-der-ful.<STOP E5>
+
+
+
+//[01C24E = 0039]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $72)
+<CODE B0>Huh?<STOP E5>
+
+
+
+//[01C254 = 003A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $74)
+Punish me more...<LINE>
+my Mistress!<STOP E5>
+
+
+
+//[01C266 = 003B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $76)
+Turns out Hagata is a<LINE>
+perv.<STOP E5>
+
+
+
+//[01C276 = 003C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $78)
+<CODE B0>In that case, tell me<LINE>
+everything you know!<STOP E5>
+
+
+
+//[01C28E = 003D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $7A)
+<CODE B0>I'll talk. Just...<LINE>
+<CODE B1>abuse me more.<CHOICE E4>
+
+
+
+//[01C2A8 = 003E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $7C)
+Speak, you cur!<STOP E5>
+
+
+
+//[01C2B8 = 003F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $7E)
+Ooh, that manner of<LINE>
+speaking. It's won-<LINE>
+der-ful!<CHOICE E4>
+
+
+
+//[01C2CE = 0040]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $80)
+<CODE B0>Argh! This guy is so<LINE>
+creepy.<CHOICE E4>
+
+
+
+//[01C2E2 = 0041]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $82)
+<CODE B0>Where's Ran?!<STOP E5>
+
+
+
+//[01C2EE = 0042]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $84)
+<CODE B0>I really don't know.<LINE>
+<CODE B1>My Mistress.<CHOICE E4>
+
+
+
+//[01C306 = 0043]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $86)
+<CODE B0>What is Dark Hazzard?<STOP E5>
+
+
+
+//[01C31A = 0044]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $88)
+<CODE B0>Dark Hazzard is<LINE>
+plotting to conquer<LINE>
+the world using battle
+golfers. <CODE B1>O-Mis-tress-<LINE>
+of-mine.<CHOICE E4>
+
+
+
+//[01C35A = 0045]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $8A)
+<CODE B0>You wanna take a pitch
+to the back of the<LINE>
+head?!<STOP E5>
+
+
+
+
+//[01C376 = 0046]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $8C)
+<CODE B0>Beat me with a metal<LINE>
+bat, my Mistress!<CHOICE E4>
+
+
+
+//[01C390 = 0047]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $8E)
+<CODE B0>Who's the boss of Dark
+Hazzard?<STOP E5>
+
+
+
+//[01C3A6 = 0048]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $90)
+Y-You're my only boss,
+my Mistress.<STOP E5>
+
+
+
+//[01C3C0 = 0049]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $92)
+Turns out Hagata is a<LINE>
+one-track mind<LINE>
+pervert.<STOP E5>
+
+
+
+//[01C3D6 = 004A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $94)
+<CODE B0>Never mind that, my<LINE>
+Mistress! Please be<LINE>
+careful of your next<LINE>
+opponent, Kitako.<STOP E5>
+
+
+
+//[01C3FE = 004B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $96)
+<CODE B0>It looks like it's<LINE>
+pointless to ask any<LINE>
+more questions.<STOP E5>
+
+
+
+//[01C416 = 004C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $98)
+Oh, I know! My<LINE>
+Mistress! I'll tell<LINE>
+you my special moves,<LINE>
+so please use them,<LINE>
+okay?<STOP E5>
+
+
+
+//[01C446 = 004D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $9A)
+Yui learned the<LINE>
+Central League Shot<LINE>
+and Pacific League<LINE>
+Shot skills.<STOP E5>
+
+
+
+//[01C46C = 004E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $9C)
+If it's all right with
+you, I'll be your<LINE>
+practice partner any<LINE>
+time. It's okay! Since
+I've already done some
+awful things to<LINE>
+you...<CHOICE E4>
+
+
+
+//[01C4A8 = 004F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $9E)
+<CODE B0>Where should we go?<CHOICE E4>
+
+
+
+//[01C4B4 = 0050]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $A0)
+Yui heads to the<LINE>
+course where Kitako<LINE>
+awaits.<CHOICE E4>
+
+
+
+//[01C4CA = 0051]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $A2)
+Yui arrives at the<LINE>
+course where Kitako<LINE>
+awaits.<STOP E5>
+
+
+
+//[01C4DE = 0052]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $A4)
+<CODE B0>Where in the-? This<LINE>
+place is creepy!<STOP E5>
+
+
+
+//[01C4EE = 0053]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $A6)
+Welcome! Nururihyon.<CHOICE E4>
+
+
+
+//[01C4FC = 0054]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $A8)
+<CODE B0>Are you... Ms.<LINE>
+Kitako?<STOP E5>
+
+
+
+//[01C50E = 0055]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $AA)
+Silence!<LINE>
+You're a nururihyon,<LINE>
+which means that you<LINE>
+already know!<STOP E5>
+
+
+
+//[01C536 = 0056]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $AC)
+Hey, Kitako! Be<LINE>
+careful.<STOP E5>
+
+
+
+//[01C548 = 0057]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $AE)
+I shall, Mother.<CHOICE E4>
+
+
+
+//[01C556 = 0058]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $B0)
+<CODE B0>Argh, I'm scared.<CHOICE E4>
+
+
+
+//[01C562 = 0059]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $B2)
+<CODE B0>Eeew! It's a<LINE>
+graveyard.<CHOICE E4>
+
+
+
+//[01C576 = 005A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $B4)
+<CODE B0>I can't think out of<LINE>
+fear.<CHOICE E4>
+
+
+
+//[01C586 = 005B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $B6)
+<CODE B0>Do you know a girl<LINE>
+called Ran Ryuzaki?<STOP E5>
+
+
+
+//[01C59C = 005C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $B8)
+What business do you<LINE>
+have with Dog Girl?!<STOP E5>
+
+
+
+//[01C5AC = 005D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $BA)
+<CODE B0>Ah-ha-ha... Dog Girl.<LINE>
+Right...<CHOICE E4>
+
+
+
+//[01C5C0 = 005E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $BC)
+<CODE B0>Who's the boss of Dark
+Hazzard?<STOP E5>
+
+
+
+//[01C5D6 = 005F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $BE)
+It's you, isn't it!<LINE>
+Nururihyon!<STOP E5>
+
+
+
+//[01C5EE = 0060]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $C0)
+I'm telling you,<LINE>
+you've got it wrong!<CHOICE E4>
+
+
+
+//[01C5FC = 0061]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $C2)
+<CODE B0>Jeez!<LINE>
+How can I make you<LINE>
+believe I'm not a<LINE>
+nururihyon?<STOP E5>
+
+
+
+//[01C622 = 0062]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $C4)
+Silence! You still<LINE>
+intend to feign<LINE>
+ignorance!<CHOICE E4>
+
+
+
+//[01C638 = 0063]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $C6)
+<CODE B0>She firmly believes<LINE>
+I'm some ghost.<CHOICE E4>
+
+
+
+//[01C652 = 0064]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $C8)
+<CODE B0>I wonder how I can<LINE>
+make her understand.<CHOICE E4>
+
+
+
+//[01C66A = 0065]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $CA)
+<CODE B0>Fine! Kitako.<LINE>
+Play a match against<LINE>
+me! Then you'll find<LINE>
+out the truth.<STOP E5>
+
+
+
+//[01C69A = 0066]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $CC)
+All right! Just what I
+was hoping for!<STOP E5>
+
+
+
+//[01C6AA = 0067]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $CE)
+Hey! Kitako! Don't let
+your guard down!<STOP E5>
+
+
+
+//[01C6BC = 0068]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $D0)
+Yes, Mother!<CHOICE E4>
+
+
+
+//[01C6C6 = 0069]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $D2)
+Are you ready?!<LINE>
+Nururihyon. Evil will<LINE>
+be destroyed at all<LINE>
+costs!<STOP E5>
+
+
+
+//[01C6E8 = 006A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $D4)
+<CODE B0>You will be burned<LINE>
+with black flames!<CHOICE E4>
+
+
+
+//[01C6FE = 006B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $D6)
+I win! Nururihyon!<STOP E5>
+
+
+
+//[01C712 = 006C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $D8)
+Yui reigns over a<LINE>
+world of darkness as a
+battle golfer of Dark<LINE>
+Hazzard.<CHOICE E4>
+
+
+
+//[01C740 = 006D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $DA)
+<CODE B0>I win.<STOP E5>
+
+
+
+//[01C74A = 006E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $DC)
+It can't be! To think<LINE>
+that I might lose!<STOP E5>
+
+
+
+//[01C75E = 006F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $DE)
+Arrrgh... Kitako...<CHOICE E4>
+
+
+
+//[01C770 = 0070]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $E0)
+<CODE B0>You know, Kitako, how<LINE>
+come you assume that<LINE>
+I'm a nururihyon?<STOP E5>
+
+
+
+//[01C79C = 0071]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $E2)
+I have proof right<LINE>
+here!<CHOICE E4>
+
+
+
+//[01C7B0 = 0072]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $E4)
+She doesn't seem like<LINE>
+a bad person.<CHOICE E4>
+
+
+
+//[01C7CA = 0073]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $E6)
+There is no point in<LINE>
+investigating<LINE>
+further.<CHOICE E4>
+
+
+
+//[01C7DC = 0074]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $E8)
+<CODE B0>How exactly?<CHOICE E4>
+
+
+
+//[01C7EC = 0075]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $EA)
+Where is Ran?<STOP E5>
+
+
+
+//[01C7F6 = 0076]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $EC)
+I'd never tell someone
+like you!<CHOICE E4>
+
+
+
+//[01C808 = 0077]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $EE)
+Who's the boss of Dark
+Hazzard?<STOP E5>
+
+
+
+//[01C820 = 0078]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $F0)
+Like I care!<CHOICE E4>
+
+
+
+//[01C828 = 0079]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $F2)
+<CODE B0>Give me a break!<LINE>
+In that case, let's<LINE>
+see your evidence!<STOP E5>
+
+
+
+//[01C848 = 007A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $F4)
+What did you say?!<STOP E5>
+
+
+
+//[01C852 = 007B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $F6)
+Wait, Kitako!<LINE>
+Something's not right.
+Your ghost radar isn't
+responding at all.<LINE>
+Supposing this girl<LINE>
+were a nururihyon,<LINE>
+there should be<LINE>
+SOMETHING on the<LINE>
+radar!<STOP E5>
+
+
+
+//[01C8B4 = 007C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $F8)
+Gasp! Now that you<LINE>
+mention it...<CHOICE E4>
+
+
+
+//[01C8C4 = 007D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $FA)
+So then you aren't a<LINE>
+nururihyon?<STOP E5>
+
+
+
+//[01C8DE = 007E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $FC)
+<CODE B0>I TOLD you, my name is
+Yui Mizuhara. I've<LINE>
+been saying you've had
+it wrong all this<LINE>
+time.<CHOICE E4>
+
+
+
+//[01C910 = 007F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $FE)
+Besides...<CHOICE E4>
+
+
+
+//[01C91A = 0080]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $100)
+What exactly is this<LINE>
+'evidence' of yours?<STOP E5>
+
+
+
+//[01C92A = 0081]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $102)
+This letter.<LINE>
+It was delivered to my
+netherworld mail.<STOP E5>
+
+
+
+//[01C958 = 0082]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $104)
+Would you let me see<LINE>
+it for a sec?<STOP E5>
+
+
+
+//[01C966 = 0083]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $106)
+Yui receives the<LINE>
+letter.<CHOICE E4>
+
+
+
+//[01C976 = 0084]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $108)
+Use what?<CHOICE E4>
+
+
+
+//[01C982 = 0085]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $10A)
+Yui reads the letter.<STOP E5>
+
+
+
+//[01C992 = 0086]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $10C)
+Allow me to get right<LINE>
+to the point, Kitako.<LINE>
+A nururihyon ghost<LINE>
+that has taken the<LINE>
+form of a girl is<LINE>
+building an<LINE>
+organization called<LINE>
+Dark Hazzard and doing
+terrible things.<LINE>
+They've captured my<LINE>
+father as well. I'm<LINE>
+begging you, please<LINE>
+save him.<STOP E5>
+
+
+
+//[01CA1A = 0087]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $10E)
+<CODE B0>W-What the heck is<LINE>
+this?!<CHOICE E4>
+
+
+
+//[01CA26 = 0088]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $110)
+<CODE B0>You've got to believe<LINE>
+me, Kitako! I'm not a<LINE>
+nururihyon!<STOP E5>
+
+
+
+//[01CA48 = 0089]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $112)
+If so, then what's the
+meaning of this<LINE>
+letter?<STOP E5>
+
+
+
+//[01CA60 = 008A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $114)
+Hmm, will you let me<LINE>
+see that letter one<LINE>
+more time?<STOP E5>
+
+
+
+//[01CA7E = 008B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $116)
+Mother Medama reads<LINE>
+the letter.<STOP E5>
+
+
+
+//[01CA94 = 008C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $118)
+Huh?<LINE>
+Hey, Kitako!<LINE>
+Is this awful hand-<LINE>
+writing Otter Man's by
+any chance?<STOP E5>
+
+
+
+//[01CAC6 = 008D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $11A)
+Gasp! Now that you<LINE>
+mention it... Damn<LINE>
+him! He tricked me<LINE>
+again! <CODE B0>I'm sorry, Yui.
+It looks like I made a
+mistake.<STOP E5>
+
+
+
+//[01CB0E = 008E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $11C)
+<CODE B0>It's okay as long as<LINE>
+you understand.<STOP E5>
+
+
+
+//[01CB1E = 008F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $11E)
+So, about this Otter<LINE>
+Man. I bet he was paid
+off by those Dark<LINE>
+Hazzard guys.<STOP E5>
+
+
+
+//[01CB58 = 0090]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $120)
+You're probably right.
+He recently came into<LINE>
+a lot of money. He's<LINE>
+in Hawaii as we<LINE>
+speak.<CHOICE E4>
+
+
+
+//[01CB90 = 0091]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $122)
+<CODE B0>So you finally believe
+me now, right?<STOP E5>
+
+
+
+//[01CBA6 = 0092]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $124)
+I'm sorry I ever<LINE>
+doubted you!<CHOICE E4>
+
+
+
+//[01CBB6 = 0093]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $126)
+<CODE B0>My friend Ran is being
+held captive by that<LINE>
+organization. Do you<LINE>
+know anything about<LINE>
+that?<STOP E5>
+
+
+
+//[01CBE2 = 0094]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $128)
+Sorry. I don't know.<CHOICE E4>
+
+
+
+//[01CBF2 = 0095]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $12A)
+<CODE B0>Well then, do you know
+anything about Dark<LINE>
+Hazzard?<STOP E5>
+
+
+
+//[01CC14 = 0096]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $12C)
+Sorry. I don't know<LINE>
+about that either.<CHOICE E4>
+
+
+
+//[01CC26 = 0097]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $12E)
+I see.<LINE>
+So, you don't know<LINE>
+anything.<STOP E5>
+
+
+
+//[01CC3E = 0098]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $130)
+I'm sorry, Yui.<LINE>
+On top of having<LINE>
+doubted you, I'm not<LINE>
+able to be of any<LINE>
+help...<LINE>
+I know!<LINE>
+I can at least teach<LINE>
+you my special moves!<STOP E5>
+
+
+
+//[01CC88 = 0099]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $132)
+Yui learns the skills<LINE>
+Kamaitachi and<LINE>
+Spinning Panel.<STOP E5>
+
+
+
+//[01CCA8 = 009A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $134)
+Oh, that's right.<LINE>
+A weird guy called<LINE>
+Wonder Man Dibot has<LINE>
+been caught drifting<LINE>
+around. Be careful!<STOP E5>
+
+
+
+//[01CCE2 = 009B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $136)
+Yeah, thanks. I'll be<LINE>
+careful.<STOP E5>
+
+
+
+//[01CCF4 = 009C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $138)
+If anything happens,<LINE>
+drop a letter in the<LINE>
+netherworld mail,<LINE>
+okay?<CHOICE E4>
+
+
+
+//[01CD12 = 009D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $13A)
+Yui heads to the<LINE>
+course where Hagata<LINE>
+awaits.<CHOICE E4>
+
+
+
+//[01CD28 = 009E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $13C)
+Yui heads to the<LINE>
+course where Dibot<LINE>
+awaits.<CHOICE E4>
+
+
+
+//[01CD42 = 009F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $13E)
+<CODE B0>Yui arrives at the<LINE>
+course where Dibot<LINE>
+awaits.<STOP E5>
+
+
+
+//[01CD5C = 00A0]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $140)
+The red-, setting sun-
+burns brightly-<STOP E5>
+
+
+
+//[01CD72 = 00A1]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $142)
+Who're you?!<STOP E5>
+
+
+
+//[01CD8A = 00A2]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $144)
+Dibot is here!<LINE>
+Dibot the Wonder Man!<LINE>
+Also known as... the<LINE>
+Wandering Hero!<LINE>
+<CODE B0>Wonder Man! Dibot!<CHOICE E4>
+
+
+
+//[01CDCE = 00A3]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $146)
+You're Dibot, right?!<STOP E5>
+
+
+
+//[01CDDE = 00A4]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $148)
+<CODE B0>Yui Mizuhara!<CHOICE E4>
+
+
+
+//[01CDEE = 00A5]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $14A)
+<CODE B0>I'm sick of it!<LINE>
+It's nothing but guys<LINE>
+like this.<CHOICE E4>
+
+
+
+//[01CE04 = 00A6]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $14C)
+<CODE B0>Anyhow, it's a decent<LINE>
+course.<CHOICE E4>
+
+
+
+//[01CE1C = 00A7]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $14E)
+<CODE B0>The participants in<LINE>
+this tournament...<LINE>
+are all <CODE B1>weirdos!<CHOICE E4>
+
+
+
+//[01CE3C = 00A8]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $150)
+You know Ran, don't<LINE>
+you? Tell me.<STOP E5>
+
+
+
+//[01CE4E = 00A9]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $152)
+<CODE B0>You know a man named<LINE>
+Asuka Jiro, right?!<STOP E5>
+
+
+
+//[01CE68 = 00AA]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $154)
+<CODE B0>Huh?<STOP E5>
+
+
+
+//[01CE6E = 00AB]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $156)
+You're the one who<LINE>
+killed Asuka!<STOP E5>
+
+
+
+//[01CE84 = 00AC]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $158)
+<CODE B0>W-What are you talking
+about?! I don't know<LINE>
+anything about that!<STOP E5>
+
+
+
+//[01CE9A = 00AD]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $15A)
+<CODE B0>That's a lie!<STOP E5>
+
+
+
+//[01CEA4 = 00AE]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $15C)
+<CODE B0>Waa! This person is<LINE>
+scary!<CHOICE E4>
+
+
+
+//[01CEB6 = 00AF]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $15E)
+Who's the boss of Dark
+Hazzard?<STOP E5>
+
+
+
+//[01CECC = 00B0]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $160)
+<CODE B0>Yui Mizuhara.<LINE>
+Judging from appear-<LINE>
+ances, I'd say you're<LINE>
+Japan's second best<LINE>
+golfer!<STOP E5>
+
+
+
+//[01CEFE = 00B1]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $162)
+Oh yeah? Who's the<LINE>
+best, then?!<STOP E5>
+
+
+
+//[01CF12 = 00B2]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $164)
+<CODE B0>Tee-hee!<LINE>
+<CODE B8><CODE B1><CODE B9>Tch, <CODE B8>tch,<CODE B9> tch...<LINE>
+<CODE B2><CODE BA>It. Is. Me!<STOP E5>
+
+
+
+//[01CF34 = 00B3]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $166)
+<CODE BB><CODE B0>Jeez, now I'm getting<LINE>
+angry!<CHOICE E4>
+
+
+
+//[01CF40 = 00B4]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $168)
+<CODE B0>Excuse me, strange<LINE>
+man! I'm in a hurry!<LINE>
+Unless you need some-<LINE>
+thing, get out there!<STOP E5>
+
+
+
+//[01CF74 = 00B5]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $16A)
+That's not how this<LINE>
+works.<CHOICE E4>
+
+
+
+//[01CF82 = 00B6]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $16C)
+<CODE B0>This strange appear-<LINE>
+ance leaves no doubt.<LINE>
+This guy is a battle<LINE>
+golfer.<CHOICE E4>
+
+
+
+//[01CFAA = 00B7]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $16E)
+You're one of Dark<LINE>
+Hazzard's battle<LINE>
+golfers, aren't you?!<STOP E5>
+
+
+
+//[01CFCA = 00B8]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $170)
+<CODE B0>Tee-hee!<CODE B1> You've found<LINE>
+me out. I'll send you<LINE>
+to Hell within 5<LINE>
+minutes.<STOP E5>
+
+
+
+//[01CFF6 = 00B9]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $172)
+<CODE B0>5 minutes, huh! You<LINE>
+don't say.<STOP E5>
+
+
+
+//[01D00E = 00BA]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $174)
+<CODE B0>That's because...<LINE>
+this power suit only<LINE>
+holds out for 5<LINE>
+minutes!<STOP E5>
+
+
+
+//[01D032 = 00BB]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $176)
+<CODE B0>How stupid!<LINE>
+Who goes and blabs<LINE>
+about their own weak-<LINE>
+ness?!<STOP E5>
+
+
+
+//[01D05E = 00BC]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $178)
+<CODE B0>Tee-hee.<CODE B1> Now I've done
+it.<CHOICE E4>
+
+
+
+//[01D06E = 00BD]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $17A)
+I'll show you the best
+golf technique in all<LINE>
+of Japan!<STOP E5>
+
+
+
+//[01D090 = 00BE]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $17C)
+<CODE B0>You will be burned<LINE>
+with black flames!<CHOICE E4>
+
+
+
+//[01D0A6 = 00BF]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $17E)
+<CODE B0>Asukaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaa!
+I've taken your<LINE>
+revenge!<STOP E5>
+
+
+
+//[01D0F6 = 00C0]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $180)
+Yui reigns over a<LINE>
+world of darkness as a
+battle golfer of Dark<LINE>
+Hazzard.<CHOICE E4>
+
+
+
+//[01D124 = 00C1]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $182)
+How about that,<LINE>
+Mister! Turns out I'm<LINE>
+the one who's the<LINE>
+best.<STOP E5>
+
+
+
+//[01D144 = 00C2]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $184)
+Hmph, it would appear<LINE>
+so.<CHOICE E4>
+
+
+
+//[01D152 = 00C3]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $186)
+Now, tell me every-<LINE>
+thing you know.<STOP E5>
+
+
+
+//[01D16A = 00C4]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $188)
+Whatever ARE you<LINE>
+talking about?<CHOICE E4>
+
+
+
+//[01D178 = 00C5]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $18A)
+<CODE B0>Bleeeh! Pompous jerk!<CHOICE E4>
+
+
+
+//[01D188 = 00C6]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $18C)
+I guess there's no<LINE>
+point in investigating
+further.<CHOICE E4>
+
+
+
+//[01D19C = 00C7]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $18E)
+<CODE B0>One way or another I<LINE>
+have to find a clue.<CHOICE E4>
+
+
+
+//[01D1B2 = 00C8]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $190)
+Where is Ran?!<STOP E5>
+
+
+
+//[01D1BC = 00C9]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $192)
+Who knows.<CHOICE E4>
+
+
+
+//[01D1C2 = 00CA]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $194)
+Just who is the boss<LINE>
+of Dark Hazzard?<STOP E5>
+
+
+
+//[01D1DE = 00CB]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $196)
+<CODE B0>Tee-hee!<CODE B1> It is... me!<LINE>
+Just kidding.<CHOICE E4>
+
+
+
+//[01D1F6 = 00CC]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $198)
+<CODE B0>Pompous types like<LINE>
+that get knocked down<LINE>
+a peg.<CODE B1><CHOICE E4>
+
+
+
+//[01D20E = 00CD]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $19A)
+I'll ask you once<LINE>
+more! Where is Ran?!<STOP E5>
+
+
+
+//[01D224 = 00CE]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $19C)
+Fine. I'll tell you.<LINE>
+<CODE B0>They say she's that<LINE>
+caddie right behind<LINE>
+you!<STOP E5>
+
+
+
+//[01D24E = 00CF]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $19E)
+Oh yeah?! Hmm!<CHOICE E4>
+
+
+
+//[01D25A = 00D0]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1A0)
+<CODE B0>But, taking a closer<LINE>
+look at you, you're<LINE>
+quite lovely. How do I
+put it<CODE B1>...<LINE>
+<CODE B0>That red suit<CODE B1>...<CODE B0><STOP E5>
+
+
+
+//[01D28A = 00D1]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1A2)
+<CODE B0>Tee-hee.<CODE B1> You've got a<LINE>
+pretty good eye to<LINE>
+notice my fashion<LINE>
+sense.<LINE>
+All right! I like you!
+I'll tell you anything
+you want to know.<STOP E5>
+
+
+
+//[01D2E0 = 00D2]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1A4)
+<CODE B0>It turns out Dibot is<LINE>
+an idiot.<CODE B1><CHOICE E4>
+
+
+
+//[01D2F4 = 00D3]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1A6)
+Where is Ran?<STOP E5>
+
+
+
+//[01D302 = 00D4]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1A8)
+Hmm...<LINE>
+I don't know where she
+is, but it appears she
+receives special<LINE>
+training as the<LINE>
+perfect battle<LINE>
+golfer.<STOP E5>
+
+
+
+//[01D348 = 00D5]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1AA)
+<CODE B0>It can't be. That's<LINE>
+awful!<CHOICE E4>
+
+
+
+//[01D358 = 00D6]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1AC)
+<CODE B0>Who's the boss of Dark
+Hazzard?<STOP E5>
+
+
+
+//[01D36E = 00D7]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1AE)
+He's called Professor<LINE>
+G, but as for his real
+name...<STOP E5>
+
+
+
+//[01D398 = 00D8]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1B0)
+Not a clue.<STOP E5>
+
+
+
+//[01D3A4 = 00D9]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1B2)
+That's right.<CHOICE E4>
+
+
+
+//[01D3AA = 00DA]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1B4)
+Do you know anything<LINE>
+else?<STOP E5>
+
+
+
+//[01D3BC = 00DB]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1B6)
+Other than that, I<LINE>
+guess I know that you<LINE>
+have beautiful eyes...
+<CODE B0>Smooch-!<CODE B1><STOP E5>
+
+
+
+//[01D3E6 = 00DC]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1B8)
+<CODE B0>It turns out Dibot is<LINE>
+a sappy loser.<CODE B1><STOP E5>
+
+
+
+//[01D400 = 00DD]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1BA)
+<CODE B0>W-Why thank you...<LINE>
+<CODE B1>I'll just be going<LINE>
+now.<STOP E5>
+
+
+
+//[01D41C = 00DE]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1BC)
+<CODE B0>Hold on! I'll help you
+out and teach you my<LINE>
+special move.<STOP E5>
+
+
+
+//[01D442 = 00DF]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1BE)
+Yui learns the D<LINE>
+Marionette skill.<STOP E5>
+
+
+
+//[01D45C = 00E0]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1C0)
+<CODE B0>Then...<LINE>
+There was a strange<LINE>
+groan from the reading
+room at the back of<LINE>
+the clubhouse.<STOP E5>
+
+
+
+//[01D48E = 00E1]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1C2)
+<CODE B0>A groan...?<STOP E5>
+
+
+
+//[01D49A = 00E2]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1C4)
+Ahh. Now, now, it<LINE>
+would not be wise to<LINE>
+get involved in that.<STOP E5>
+
+
+
+//[01D4B6 = 00E3]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1C6)
+I see.<CODE B0> Thank you.<STOP E5>
+
+
+
+//[01D4C4 = 00E4]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1C8)
+Come anytime if you<LINE>
+need something!<CHOICE E4>
+
+
+
+//[01D4DC = 00E5]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1CA)
+Yui heads to the<LINE>
+reading room.<CHOICE E4>
+
+
+
+//[01D4EC = 00E6]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1CC)
+Yui arrives at the<LINE>
+reading room.<STOP E5>
+
+
+
+//[01D4FA = 00E7]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1CE)
+This is the reading<LINE>
+room Dibot mentioned.<CHOICE E4>
+
+
+
+//[01D512 = 00E8]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1D0)
+It's locked.<CHOICE E4>
+
+
+
+//[01D520 = 00E9]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1D2)
+There isn't anything<LINE>
+in particular.<CHOICE E4>
+
+
+
+//[01D52E = 00EA]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1D4)
+It's an ordinary<LINE>
+wall.<CHOICE E4>
+
+
+
+//[01D53E = 00EB]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1D6)
+Well, what should we<LINE>
+do?<CHOICE E4>
+
+
+
+//[01D54A = 00EC]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1D8)
+Yui listens care-<LINE>
+fully.<STOP E5>
+
+
+
+//[01D558 = 00ED]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1DA)
+Ugh... Uugh... Ugh...<STOP E5>
+
+
+
+//[01D568 = 00EE]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1DC)
+Definite groans can be
+heard.<CHOICE E4>
+
+
+
+//[01D57C = 00EF]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1DE)
+I gotta do something<LINE>
+about the lock.<CHOICE E4>
+
+
+
+//[01D58A = 00F0]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1E0)
+It's no use. I'll go<LINE>
+outside for a sec.<CHOICE E4>
+
+
+
+//[01D5A0 = 00F1]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1E2)
+Allow me to introduce<LINE>
+myself. Black Fire!<STOP E5>
+
+
+
+//[01D5B6 = 00F2]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1E4)
+W-Who are...?!<STOP E5>
+
+
+
+//[01D5C2 = 00F3]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1E6)
+It's true.<LINE>
+I am you. You are me.<CHOICE E4>
+
+
+
+//[01D5DA = 00F4]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1E8)
+What are you?!<STOP E5>
+
+
+
+//[01D5EA = 00F5]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1EA)
+I already told you.<LINE>
+I'm YUI. In other<LINE>
+words... You!<CHOICE E4>
+
+
+
+//[01D610 = 00F6]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1EC)
+B85. W58. H83.<LINE>
+<CODE B0>Your bust is 5<LINE>
+centimeters larger<LINE>
+than mine.<CHOICE E4>
+
+
+
+//[01D638 = 00F7]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1EE)
+<CODE B0>Something doesn't feel
+right.<CHOICE E4>
+
+
+
+//[01D648 = 00F8]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1F0)
+If I'm you...<LINE>
+Then who are you?!<CHOICE E4>
+
+
+
+//[01D664 = 00F9]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1F2)
+Where is Ran?!<STOP E5>
+
+
+
+//[01D66E = 00FA]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1F4)
+Lord G knows.<STOP E5>
+
+
+
+//[01D67C = 00FB]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1F6)
+Again, this 'Professor
+G'.<CHOICE E4>
+
+
+
+//[01D68A = 00FC]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1F8)
+Who is Professor G?<STOP E5>
+
+
+
+//[01D69E = 00FD]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1FA)
+Who knows.<STOP E5>
+
+
+
+//[01D6AC = 00FE]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1FC)
+<CODE B0>Hmph! Our faces may be
+similar, but your<LINE>
+personality is way<LINE>
+worse.<CHOICE E4>
+
+
+
+//[01D6CA = 00FF]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $1FE)
+<CODE B0>What are those moans<LINE>
+coming from the<LINE>
+reading room?<STOP E5>
+
+
+
+//[01D6E0 = 0100]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $200)
+Tee-hee-... How<LINE>
+indecent. You have<LINE>
+curious interests, now
+don't you.<STOP E5>
+
+
+
+//[01D706 = 0101]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $202)
+<CODE B0>W-What was that?!<LINE>
+You creep!<CHOICE E4>
+
+
+
+//[01D714 = 0102]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $204)
+<CODE B0>I'm sick of this!<LINE>
+What's going on?! It<LINE>
+doesn't make any<LINE>
+sense.<STOP E5>
+
+
+
+//[01D72E = 0103]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $206)
+You're not very<LINE>
+bright, are you? I<LINE>
+already told you. You<LINE>
+are me. I am you.<CHOICE E4>
+
+
+
+//[01D75E = 0104]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $208)
+This person is<LINE>
+strangely expression-<LINE>
+less... Could it be?!<CHOICE E4>
+
+
+
+//[01D782 = 0105]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $20A)
+You're an android,<LINE>
+aren't you?!<STOP E5>
+
+
+
+//[01D792 = 0106]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $20C)
+That's right. I'm your
+simulation machine,<LINE>
+YUI. In other words,<LINE>
+you yourself!<CHOICE E4>
+
+
+
+//[01D7C6 = 0107]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $20E)
+Then... this is my<LINE>
+course?!<CHOICE E4>
+
+
+
+//[01D7D8 = 0108]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $210)
+Incomplete Black Fire!
+You cannot beat me!<STOP E5>
+
+
+
+//[01D800 = 0109]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $212)
+<CODE B0>You will be burned<LINE>
+with black flames!<CHOICE E4>
+
+
+
+//[01D816 = 010A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $214)
+From this day forth,<LINE>
+I'M the real one.<STOP E5>
+
+
+
+//[01D828 = 010B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $216)
+Yui reigns over a<LINE>
+world of darkness as a
+battle golfer of Dark<LINE>
+Hazzard.<CHOICE E4>
+
+
+
+//[01D856 = 010C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $218)
+<CODE B0>In the end the<LINE>
+impostor couldn't beat
+the real thing.<STOP E5>
+
+
+
+//[01D872 = 010D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $21A)
+I am not programmed<LINE>
+for this kind of<LINE>
+situation.<CHOICE E4>
+
+
+
+//[01D890 = 010E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $21C)
+<CODE B0>Now then, my dear YUI,
+please tell me what<LINE>
+you know.<STOP E5>
+
+
+
+//[01D8B0 = 010F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $21E)
+I'm not programmed for
+this.<CHOICE E4>
+
+
+
+//[01D8C2 = 0110]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $220)
+Its appearance is<LINE>
+abnormal.<CHOICE E4>
+
+
+
+//[01D8D0 = 0111]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $222)
+There's no point in<LINE>
+investigating.<CHOICE E4>
+
+
+
+//[01D8DE = 0112]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $224)
+<CODE B0>I wonder why they made
+an android of me?<CHOICE E4>
+
+
+
+//[01D902 = 0113]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $226)
+Release Ran!<STOP E5>
+
+
+
+//[01D912 = 0114]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $228)
+I'm not programmed for
+this.<CHOICE E4>
+
+
+
+//[01D924 = 0115]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $22A)
+Where is Professor<LINE>
+G?!<STOP E5>
+
+
+
+//[01D936 = 0116]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $22C)
+I'm not programmed for
+this.<CHOICE E4>
+
+
+
+//[01D948 = 0117]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $22E)
+There's some secret<LINE>
+about that reading<LINE>
+room, isn't there!<LINE>
+What's inside?!<STOP E5>
+
+
+
+//[01D96C = 0118]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $230)
+I'm not programmed for
+this.<CHOICE E4>
+
+
+
+//[01D97E = 0119]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $232)
+<CODE B0>Damn you-! You piece<LINE>
+of junk android!<CODE C7><STOP E5>
+
+
+
+//[01D996 = 011A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $234)
+<CODE B8>I'm not prog-!<CODE B0>...<STOP E5>
+
+
+
+//[01D9A6 = 011B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $236)
+Yui punches YUI in the
+face with a strong<LINE>
+right straight!<CHOICE E4>
+
+
+
+//[01D9D0 = 011C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $238)
+<CODE B0>W-... What the!<STOP E5>
+
+
+
+//[01D9E0 = 011D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $23A)
+I-... Inside... Y-...<LINE>
+You're... The... S-...
+Same... As... M-...<LINE>
+Me... The... O-...<LINE>
+Only... D-... Differ-<LINE>
+ence... Is... W-...<LINE>
+Whether... Your B-...<LINE>
+Brain... Is... F-...<LINE>
+Flesh... Or... Not...<CHOICE E4>
+
+
+
+//[01DA42 = 011E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $23C)
+<CODE B0>M-Monster!<CHOICE E4>
+
+
+
+//[01DA4E = 011F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $23E)
+<CODE B0>I don't want this damn
+course!<CHOICE E4>
+
+
+
+//[01DA62 = 0120]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $240)
+<CODE B0>No! I'm not a<LINE>
+monster!<CHOICE E4>
+
+
+
+//[01DA7C = 0121]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $242)
+<CODE B0>Ran! Is Ran the same,<LINE>
+too?!<STOP E5>
+
+
+
+//[01DA8E = 0122]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $244)
+Of... C-... Course...<LINE>
+S-... She's... The...<LINE>
+P-... Perfect... B-...
+Battle... G-...<LINE>
+Golfer...<CHOICE E4>
+
+
+
+//[01DAC0 = 0123]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $246)
+<CODE B0>Professor G...!<LINE>
+Why did he make the<LINE>
+battle golfers?!<STOP E5>
+
+
+
+//[01DAE8 = 0124]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $248)
+I... Am... Not...<LINE>
+P-... Programmed...<CHOICE E4>
+
+
+
+//[01DB00 = 0125]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $24A)
+<CODE B0>Tell me the reading<LINE>
+room's secret!<STOP E5>
+
+
+
+//[01DB14 = 0126]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $24C)
+I... Am... Not...<LINE>
+P-... Programmed...<CHOICE E4>
+
+
+
+//[01DB2C = 0127]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $24E)
+YUI's face parts and<LINE>
+hairband have fallen.<CHOICE E4>
+
+
+
+//[01DB4A = 0128]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $250)
+What will you take?<CHOICE E4>
+
+
+
+//[01DB54 = 0129]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $252)
+<CODE C0>Yui takes the face<LINE>
+parts.<CHOICE E4>
+
+
+
+//[01DB68 = 012A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $254)
+<CODE C1>Yui takes the<LINE>
+hairband.<CHOICE E4>
+
+
+
+//[01DB7C = 012B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $256)
+That's not me...<LINE>
+I'm not you!<STOP E5>
+
+
+
+//[01DB96 = 012C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $258)
+S-... Self...<LINE>
+Destruct... Program...
+S-... Set... Data...<LINE>
+D-... Deletion...<STOP E5>
+
+
+
+//[01DBCC = 012D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $25A)
+<CODE B9><CODE B0>Eeek!<STOP E5>
+
+
+
+//[01DBD4 = 012E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $25C)
+YUI vanishes without a
+trace. Yui is success-
+ful in escaping by the
+skin of her teeth, but
+her leads are now cut<LINE>
+off.<CHOICE E4>
+
+
+
+//[01DC18 = 012F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $25E)
+There is no one to<LINE>
+speak to.<CHOICE E4>
+
+
+
+//[01DC2A = 0130]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $260)
+There is nothing to<LINE>
+investigate.<CHOICE E4>
+
+
+
+//[01DC3A = 0131]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $262)
+I'll try going back to
+the reading room once<LINE>
+more.<CHOICE E4>
+
+
+
+//[01DC56 = 0132]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $264)
+There is no one to<LINE>
+ask.<CHOICE E4>
+
+
+
+//[01DC66 = 0133]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $266)
+Yui heads to the<LINE>
+reading room.<CHOICE E4>
+
+
+
+//[01DC76 = 0134]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $268)
+<CODE B0>Yui arrives at the<LINE>
+reading room.<CHOICE E4>
+
+
+
+//[01DC86 = 0135]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $26A)
+Nothing much has<LINE>
+changed from before.<CHOICE E4>
+
+
+
+//[01DC9C = 0136]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $26C)
+<CODE B0>It's no use. It's<LINE>
+locked.<CHOICE E4>
+
+
+
+//[01DCB2 = 0137]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $26E)
+There's nothing<LINE>
+especially odd.<CHOICE E4>
+
+
+
+//[01DCC6 = 0138]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $270)
+It looks like an<LINE>
+ordinary wall.<CHOICE E4>
+
+
+
+//[01DCD6 = 0139]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $272)
+I wonder if there is<LINE>
+anything usable among<LINE>
+my current possess-<LINE>
+ions?<CHOICE E4>
+
+
+
+//[01DCF2 = 013A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $274)
+Yui listens care-<LINE>
+fully.<STOP E5>
+
+
+
+//[01DD00 = 013B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $276)
+Ugh... Unng...<LINE>
+Uugh...<STOP E5>
+
+
+
+//[01DD10 = 013C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $278)
+<CODE B0>I wonder what in the<LINE>
+world could be<LINE>
+inside?<CHOICE E4>
+
+
+
+//[01DD2E = 013D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $27A)
+Use what?<CHOICE E4>
+
+
+
+//[01DD3A = 013E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $27C)
+Yui tries putting on<LINE>
+YUI's face parts.<LINE>
+However, nothing<LINE>
+happens.<CHOICE E4>
+
+
+
+//[01DD64 = 013F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $27E)
+<CODE C0>Yui tries putting on<LINE>
+YUI's hairband.<STOP E5>
+
+
+
+//[01DD7E = 0140]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $280)
+<CODE B0>Huh?! What the...<LINE>
+Eeek-!<STOP E5>
+
+
+
+//[01DD92 = 0141]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $282)
+Information pours into
+Yui's head with<LINE>
+terrific force. Yui<LINE>
+learns the "Aqua<LINE>
+Hopper" and "Psycho<LINE>
+Holder" skills.<CODE C1><CODE B0><CHOICE E4>
+
+
+
+//[01DDE8 = 0142]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $284)
+There's one<LINE>
+differently colored<LINE>
+book.<CHOICE E4>
+
+
+
+//[01DE00 = 0143]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $286)
+<CODE B0>I must obtain the key<LINE>
+to the bookshelves.<CHOICE E4>
+
+
+
+//[01DE18 = 0144]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $288)
+<CODE C0>Yui tries putting on<LINE>
+YUI's hairband.<LINE>
+However, this time<LINE>
+nothing happens.<CODE C1><CHOICE E4>
+
+
+
+//[01DE4A = 0145]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $28A)
+I have to see everyone
+once more.<CHOICE E4>
+
+
+
+//[01DE5C = 0146]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $28C)
+Yui arrives at<LINE>
+Hagata's course.<STOP E5>
+
+
+
+//[01DE6E = 0147]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $28E)
+Yaaay! My Mistress.<LINE>
+You came back.<CHOICE E4>
+
+
+
+//[01DE88 = 0148]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $290)
+Hey, Hagata. Do you<LINE>
+have a key?<STOP E5>
+
+
+
+//[01DE9E = 0149]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $292)
+How stand-offish,<LINE>
+calling me 'Hagata'.<CHOICE E4>
+
+
+
+//[01DEC4 = 014A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $294)
+<CODE B0>This guy still makes<LINE>
+my head hurt.<CHOICE E4>
+
+
+
+//[01DEDC = 014B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $296)
+It's no use to keep<LINE>
+asking.<CHOICE E4>
+
+
+
+//[01DEEC = 014C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $298)
+Where's the key to the
+reading room's<LINE>
+bookshelves?!<STOP E5>
+
+
+
+//[01DF04 = 014D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $29A)
+Would you please play<LINE>
+a hole with me first?<CHOICE E4>
+
+
+
+//[01DF26 = 014E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $29C)
+This time I won't<LINE>
+lose!<STOP E5>
+
+
+
+//[01DF34 = 014F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $29E)
+<CODE B0>You will be burned<LINE>
+with black flames.<CHOICE E4>
+
+
+
+//[01DF48 = 0150]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2A0)
+What a pity. How about
+it. Play once more?<CHOICE E4>
+
+
+
+//[01DF6E = 0151]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2A2)
+Yui decides to have a<LINE>
+rematch with Hagata.<CHOICE E4>
+
+
+
+//[01DF86 = 0152]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2A4)
+I see. Well, come see<LINE>
+me again. I'll be<LINE>
+waiting.<CHOICE E4>
+
+
+
+//[01DFAE = 0153]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2A6)
+<CODE B0>I win again.<STOP E5>
+
+
+
+//[01DFBA = 0154]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2A8)
+I can't beat my<LINE>
+Mistress after all.<STOP E5>
+
+
+
+//[01DFCE = 0155]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2AA)
+<CODE B0>Well now! About that<LINE>
+key...<STOP E5>
+
+
+
+//[01DFE2 = 0156]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2AC)
+Here you go! This is<LINE>
+it.<STOP E5>
+
+
+
+//[01DFEC = 0157]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2AE)
+Yui receives the Key<LINE>
+of Zeal.<STOP E5>
+
+
+
+//[01E002 = 0158]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2B0)
+If you want to compete
+against me again,<LINE>
+please come any time.<CHOICE E4>
+
+
+
+//[01E024 = 0159]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2B2)
+Yui arrives at<LINE>
+Kitako's course.<STOP E5>
+
+
+
+//[01E036 = 015A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2B4)
+Hey-! Yui! What's up?<CHOICE E4>
+
+
+
+//[01E04E = 015B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2B6)
+<CODE B0>To tell you the truth,
+I have a problem.<STOP E5>
+
+
+
+//[01E05E = 015C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2B8)
+I'll give you advice<LINE>
+about anything I can!<CHOICE E4>
+
+
+
+//[01E07E = 015D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2BA)
+<CODE B0>I'm looking for a<LINE>
+key. Kitako! Do you<LINE>
+have one?<STOP E5>
+
+
+
+//[01E09E = 015E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2BC)
+I-I don't have a key<LINE>
+or anything.<STOP E5>
+
+
+
+//[01E0B4 = 015F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2BE)
+<CODE B0>You're hiding some-<LINE>
+thing, aren't you! You
+stuttered just now,<LINE>
+you know.<STOP E5>
+
+
+
+//[01E0CC = 0160]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2C0)
+Ohhh? Fine.<LINE>
+Well then, play a<LINE>
+match with me again,<LINE>
+and if you win I'll<LINE>
+give you the key.<STOP E5>
+
+
+
+//[01E108 = 0161]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2C2)
+<CODE B0>Really? You'll really<LINE>
+give it to me?<STOP E5>
+
+
+
+//[01E11A = 0162]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2C4)
+However, you have to<LINE>
+play 1 hole!<STOP E5>
+
+
+
+//[01E12C = 0163]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2C6)
+That's fine.<CHOICE E4>
+
+
+
+//[01E130 = 0164]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2C8)
+I won't go easy on you
+this time!<STOP E5>
+
+
+
+//[01E142 = 0165]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2CA)
+<CODE B0>You will be burned<LINE>
+with black flames.<CHOICE E4>
+
+
+
+//[01E156 = 0166]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2CC)
+Well! What do you<LINE>
+think of my ability?!<LINE>
+Play once more?<CHOICE E4>
+
+
+
+//[01E17A = 0167]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2CE)
+Yui decides to have a<LINE>
+rematch with Kitako.<CHOICE E4>
+
+
+
+//[01E190 = 0168]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2D0)
+Yeah. Catch you later.<CHOICE E4>
+
+
+
+//[01E19C = 0169]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2D2)
+<CODE B0>I win!<STOP E5>
+
+
+
+//[01E1A6 = 016A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2D4)
+Nice job, Yui!<STOP E5>
+
+
+
+//[01E1B6 = 016B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2D6)
+<CODE B0>A promise is a<LINE>
+promise! The key,<LINE>
+please.<STOP E5>
+
+
+
+//[01E1CA = 016C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2D8)
+It's a deal. Here!<STOP E5>
+
+
+
+//[01E1D6 = 016D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2DA)
+Yui receives the Key<LINE>
+of Sorrow.<STOP E5>
+
+
+
+//[01E1EA = 016E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2DC)
+If you want to compete
+against me, come any<LINE>
+time.<CHOICE E4>
+
+
+
+//[01E206 = 016F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2DE)
+Yui arrives at<LINE>
+Dibot's course.<STOP E5>
+
+
+
+//[01E21C = 0170]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2E0)
+<CODE B0>Tee-hee.<CODE B1> You've come<LINE>
+back. It looks like<LINE>
+you've gone and fallen
+for me for real.<CHOICE E4>
+
+
+
+//[01E24A = 0171]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2E2)
+<CODE B0>It's because I'm<LINE>
+looking for some-<LINE>
+thing!<STOP E5>
+
+
+
+//[01E260 = 0172]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2E4)
+I know. You're looking
+for... true love. Am I
+right?<CODE B0> Smooch-<CHOICE E4>
+
+
+
+//[01E286 = 0173]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2E6)
+Pretentious jerk!<CHOICE E4>
+
+
+
+//[01E290 = 0174]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2E8)
+<CODE B0>I'm looking for a key.
+If you have one,<LINE>
+please give it to me.<STOP E5>
+
+
+
+//[01E2B6 = 0175]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2EA)
+<CODE B0>A key, huh...<LINE>
+If it's the key of<LINE>
+love to open my heart<LINE>
+then you already have<LINE>
+it.<CODE B1> Smooch-!<STOP E5>
+
+
+
+//[01E2F2 = 0176]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2EC)
+<CODE B0>Don't mess with me!<LINE>
+The key, please!<STOP E5>
+
+
+
+//[01E30C = 0177]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2EE)
+<CODE B0>Very well. If you want
+it... then play<LINE>
+against me! If you win
+then I'll give you my<LINE>
+key!<STOP E5>
+
+
+
+//[01E344 = 0178]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2F0)
+<CODE B0>You will?!<STOP E5>
+
+
+
+//[01E34C = 0179]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2F2)
+<CODE B0>However, I'm only<LINE>
+playing 1 hole!<STOP E5>
+
+
+
+//[01E362 = 017A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2F4)
+That's fine.<CHOICE E4>
+
+
+
+//[01E366 = 017B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2F6)
+This time I'll show<LINE>
+you the best golf<LINE>
+technique in Japan!<STOP E5>
+
+
+
+//[01E38A = 017C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2F8)
+<CODE B0>You will be burned<LINE>
+with black flames.<CHOICE E4>
+
+
+
+//[01E39E = 017D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2FA)
+I win! Well, play once
+more?<CHOICE E4>
+
+
+
+//[01E3C0 = 017E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2FC)
+Yui decides to have a<LINE>
+rematch with Dibot.<CHOICE E4>
+
+
+
+//[01E3DA = 017F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $2FE)
+If you want to play<LINE>
+against me you may<LINE>
+come anytime!<CHOICE E4>
+
+
+
+//[01E3F2 = 0180]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $300)
+I win!<STOP E5>
+
+
+
+//[01E3FC = 0181]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $302)
+<CODE B0>Tee-hee.<CODE B1> Nice job.<STOP E5>
+
+
+
+//[01E410 = 0182]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $304)
+Well, a promise is a<LINE>
+promise! The key,<LINE>
+please.<STOP E5>
+
+
+
+//[01E426 = 0183]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $306)
+Very well. Take it!<STOP E5>
+
+
+
+//[01E438 = 0184]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $308)
+Yui receives the Key<LINE>
+of First Place.<STOP E5>
+
+
+
+//[01E44E = 0185]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $30A)
+If you want to play<LINE>
+against me you may<LINE>
+come anytime!<CHOICE E4>
+
+
+
+//[01E466 = 0186]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $30C)
+Yui arrives at the<LINE>
+reading room.<STOP E5>
+
+
+
+//[01E476 = 0187]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $30E)
+Now the mystery should
+be unraveled.<CHOICE E4>
+
+
+
+//[01E48C = 0188]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $310)
+To start with, I gotta
+unlock this...<CHOICE E4>
+
+
+
+//[01E49E = 0189]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $312)
+It hasn't changed<LINE>
+since earlier.<CHOICE E4>
+
+
+
+//[01E4AC = 018A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $314)
+A voice can be heard<LINE>
+from behind the wall.<CHOICE E4>
+
+
+
+//[01E4BE = 018B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $316)
+Yui listens closely.<STOP E5>
+
+
+
+//[01E4CC = 018C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $318)
+Ugh... Ugh... Uugh...<STOP E5>
+
+
+
+//[01E4DA = 018D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $31A)
+A voice can still be<LINE>
+heard.<CHOICE E4>
+
+
+
+//[01E4E8 = 018E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $31C)
+Yui uses the Key of<LINE>
+Zeal. The bookshelves<LINE>
+are unlocked.<STOP E5>
+
+
+
+//[01E50E = 018F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $31E)
+<CODE B0>Just now, I-! I'm<LINE>
+being overwhelmed with
+emotion! My tears!<LINE>
+They won't stop-!<LINE>
+<CODE B1>Gasp-...<CODE B2> What am I<LINE>
+saying...<STOP E5>
+
+
+
+//[01E55A = 0190]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $320)
+Those who use the Key<LINE>
+of Zeal are afflicted<LINE>
+with a curse of deep<LINE>
+emotions.<CODE B0><CHOICE E4>
+
+
+
+//[01E584 = 0191]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $322)
+There is one<LINE>
+differently colored<LINE>
+book.<CHOICE E4>
+
+
+
+//[01E59C = 0192]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $324)
+I'm sure of it!<LINE>
+There's gotta be some<LINE>
+secret to this book.<STOP E5>
+
+
+
+//[01E5B2 = 0193]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $326)
+Yui picks up the<LINE>
+differently colored<LINE>
+book.<CODE B8><CODE C0><STOP E5>
+
+
+
+//[01E5CA = 0194]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $328)
+I see. So this is how<LINE>
+it is.<CHOICE E4>
+
+
+
+//[01E5D8 = 0195]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $32A)
+Yui uses the Key of<LINE>
+Zeal. However, nothing
+happens.<CHOICE E4>
+
+
+
+//[01E5FC = 0196]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $32C)
+It turns out there's a
+door and a panel on<LINE>
+the wall behind the<LINE>
+bookshelves.<CHOICE E4>
+
+
+
+//[01E620 = 0197]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $32E)
+<CODE B0>So... What should I<LINE>
+do?<CHOICE E4>
+
+
+
+//[01E632 = 0198]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $330)
+<CODE B0>Grr-! It's no use! It<LINE>
+doesn't seem to open.<CHOICE E4>
+
+
+
+//[01E648 = 0199]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $332)
+The numbers 1-9, WIPS,
+and T. What's up with<LINE>
+that?<CHOICE E4>
+
+
+
+//[01E66C = 019A]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $334)
+Perhaps the panel has<LINE>
+a clue to opening the<LINE>
+door.<CHOICE E4>
+
+
+
+//[01E690 = 019B]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $336)
+It's no use. I'll have
+to go gather<LINE>
+information from<LINE>
+everyone again.<CHOICE E4>
+
+
+
+//[01E6B8 = 019C]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $338)
+Yui uses the Key of<LINE>
+Sorrow.<STOP E5>
+
+
+
+//[01E6CC = 019D]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $33A)
+<CODE B0>Ugh... I can't<LINE>
+breathe!<CODE B1> S-Somebody...
+Help me!<STOP E5>
+
+
+
+//[01E6EE = 019E]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $33C)
+Yui is suddenly unable
+to breathe.<STOP E5>
+
+
+
+//[01E706 = 019F]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $33E)
+...-!<STOP E5>
+
+
+
+//[01E710 = 01A0]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $340)
+Yui's strength gives<LINE>
+out and she dies.<STOP E5>
+
+
+
+//[01E726 = 01A1]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $342)
+...<LINE>
+...<LINE>
+...<LINE>
+...<CODE B0>H-Huh?<LINE>
+What was I doing?<STOP E5>
+
+
+
+//[01E788 = 01A2]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $344)
+Those who use the Key<LINE>
+of Sorrow are<LINE>
+afflicted with a curse
+of having nightmares.<LINE>
+To top it off, the key
+is broken. The book-<LINE>
+shelves' lock didn't<LINE>
+open.<CHOICE E4>
+
+
+
+//[01E7D0 = 01A3]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $346)
+Yui uses the Key of<LINE>
+First Place.<STOP E5>
+
+
+
+//[01E7E6 = 01A4]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $348)
+<CODE B0>Eek! What is this-!<STOP E5>
+
+
+
+//[01E7F4 = 01A5]
+#ALIGN(2)
+#WRITEOFS(PtrTable, $34A)
+The Key of First Place
+breaks without a<LINE>
+sound. The Key of<LINE>
+First Place is Japan's
+utmost fragile and<LINE>
+worthless key. To top<LINE>
+it off, the book-<LINE>
+shelves' lock didn't<LINE>
+open.<CHOICE E4>
+
+
+//==============================================================================
+// The remainder of the script.
+//==============================================================================
+//#ACTIVETBL(Table)
+
+#VAR(MyPtr2, CUSTOMPOINTER)
+#VAR(PtrTable2, POINTERTABLE)
+
+#CREATEPTR(MyPtr2, "MSB16", $-90000, 16)
+
+
+#JMP($90000)
+#PTRTBL(PtrTable2, $90000, 2, MyPtr2)
+#W32($B41C)
+#W32($B422)
+
+#JMP($902CE)
+
+
+//[01EB1C = 0000]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $0)
+<CODE B0>Yui arrives at the<LINE>
+course where Hagata<LINE>
+awaits.<STOP E5>
+
+
+
+//[01EB32 = 0001]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2)
+Hey, my Mistress! Was<LINE>
+the key I gave you a<LINE>
+help?<CHOICE E4>
+
+
+
+//[01EB5A = 0002]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $4)
+<CODE B0>Yeah! Thank you!<LINE>
+You're a life saver.<STOP E5>
+
+
+
+//[01EB76 = 0003]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $6)
+So then, my Mistress!<LINE>
+A reward please!<LINE>
+Please abuse me with<LINE>
+everything you've<LINE>
+got.<CODE B0><STOP E5>
+
+
+
+//[01EBA8 = 0004]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $8)
+Forgive me for<LINE>
+repeating myself, but<LINE>
+Hagata turns out to be
+a pervert.<CHOICE E4>
+
+
+
+//[01EBC4 = 0005]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $A)
+<CODE B0>Hmph! There are times<LINE>
+when I'm helpful too.<CHOICE E4>
+
+
+
+//[01EBD8 = 0006]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $C)
+I have to do it one<LINE>
+way or another.<CHOICE E4>
+
+
+
+//[01EBE2 = 0007]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $E)
+The numbers 1-9, WIPS,
+and T. Do you know<LINE>
+anything about<LINE>
+switches like this on<LINE>
+a panel?<STOP E5>
+
+
+
+//[01EC1E = 0008]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $10)
+<CODE B0>Hmm... 1-9, WIPST...<LINE>
+Oh! Got it! Baseball<LINE>
+is a sport played with
+9 people! The<LINE>
+letters are team<LINE>
+names! Yeah! That's<LINE>
+gotta be it! That's it
+for sure! My Mis-<LINE>
+tress!<STOP E5>
+
+
+
+//[01ECA2 = 0009]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $12)
+That's right! My<LINE>
+Mistress! Since you're
+finally here, would<LINE>
+you play a 1 hole<LINE>
+match with me?<STOP E5>
+
+
+
+//[01ECD8 = 000A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $14)
+<CODE B0>Hmm... What should I<LINE>
+do?<CHOICE E4>
+
+
+
+//[01ECEA = 000B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $16)
+Yui decides to have a<LINE>
+rematch with Hagata.<CHOICE E4>
+
+
+
+//[01ED02 = 000C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $18)
+I see. Well, come see<LINE>
+me again. I'll be<LINE>
+waiting any time.<CHOICE E4>
+
+
+
+//[01ED2A = 000D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $1A)
+What a pity.<LINE>
+How about it? Play<LINE>
+once more?<CHOICE E4>
+
+
+
+//[01ED50 = 000E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $1C)
+<CODE B0>I win again.<STOP E5>
+
+
+
+//[01ED5E = 000F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $1E)
+I can't beat my<LINE>
+Mistress after all.<STOP E5>
+
+
+
+//[01ED72 = 0010]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $20)
+If you want to compete
+against me, please<LINE>
+come any time.<CHOICE E4>
+
+
+
+//[01ED94 = 0011]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $22)
+<CODE B0>Yui arrives at the<LINE>
+course where Kitako<LINE>
+awaits.<STOP E5>
+
+
+
+//[01EDAA = 0012]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $24)
+Hey, Yui! What is it<LINE>
+this time?<CHOICE E4>
+
+
+
+//[01EDD8 = 0013]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $26)
+Kitako. To tell you<LINE>
+the truth, there's<LINE>
+something I want you<LINE>
+to tell me.<STOP E5>
+
+
+
+//[01EE00 = 0014]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $28)
+If it's within my<LINE>
+power, you may ask me<LINE>
+anything.<CHOICE E4>
+
+
+
+//[01EE18 = 0015]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2A)
+I have to do it one<LINE>
+way or another.<CHOICE E4>
+
+
+
+//[01EE22 = 0016]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2C)
+It's about a panel<LINE>
+with the switches 1-9,
+WIPS, and T on it.<LINE>
+Do you know anything<LINE>
+about it?<STOP E5>
+
+
+
+//[01EE5C = 0017]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2E)
+1-9, WIPS and T...<LINE>
+I see. Hey, Yui! Will<LINE>
+you play against me<LINE>
+once more? If you win,
+I'll tell you!<CHOICE E4>
+
+
+
+//[01EEAA = 0018]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $30)
+The contest is a 1<LINE>
+hole match! Well, what
+will you do?<STOP E5>
+
+
+
+//[01EEC4 = 0019]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $32)
+<CODE B0>Hmm... What should I<LINE>
+do?<CHOICE E4>
+
+
+
+//[01EED6 = 001A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $34)
+Yui decides to have a<LINE>
+rematch with Kitako.<CHOICE E4>
+
+
+
+//[01EEEC = 001B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $36)
+I see. That's a shame.
+Well, if you change<LINE>
+your mind, please come
+anytime.<CHOICE E4>
+
+
+
+//[01EF14 = 001C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $38)
+Ta-dah! That's my<LINE>
+ability! Play once<LINE>
+more?<CHOICE E4>
+
+
+
+//[01EF38 = 001D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $3A)
+I see. Well then, bye-
+bye<CHOICE E4>
+
+
+
+//[01EF46 = 001E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $3C)
+<CODE B0>I win!<STOP E5>
+
+
+
+//[01EF50 = 001F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $3E)
+Nice job, Yui!<STOP E5>
+
+
+
+//[01EF60 = 0020]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $40)
+<CODE B0>A promise is a<LINE>
+promise! Tell me about
+the panel!<STOP E5>
+
+
+
+//[01EF76 = 0021]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $42)
+It's a deal. By the<LINE>
+way, Yui, I'd like to<LINE>
+ask you a question.<LINE>
+Can you recite the<LINE>
+names of all the<LINE>
+clubs?<STOP E5>
+
+
+
+//[01EFB0 = 0022]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $44)
+<CODE B0>Huh-! Obviously! I AM<LINE>
+a golfer, after all!<STOP E5>
+
+
+
+//[01EFD6 = 0023]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $46)
+So then, try saying<LINE>
+them all in order.<STOP E5>
+
+
+
+//[01EFF0 = 0024]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $48)
+Jeez!<CODE B0> To start with is
+1W, the driver! 2W is<LINE>
+the brassie, 3W is the
+spoon. 4W is the<LINE>
+baffy, 5W is the<LINE>
+cleek. 1-3 are long<LINE>
+irons. 4-6 are middle<LINE>
+irons. 7-9 are short<LINE>
+irons. PW is the<LINE>
+pitching wedge. SW is<LINE>
+the sand wedge. PT is<LINE>
+the putter... <CODE B1>Gasp!<STOP E5>
+
+
+
+//[01F096 = 0025]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $4A)
+Apparently, you seem<LINE>
+to understand!<STOP E5>
+
+
+
+//[01F0A6 = 0026]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $4C)
+<CODE B0>Thank you Kitako!<LINE>
+<CODE B1>But...<LINE>
+Now I know something<LINE>
+about the numbers and<LINE>
+letters on the panel,<LINE>
+but... What should I<LINE>
+input?<STOP E5>
+
+
+
+//[01F100 = 0027]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $4E)
+I don't know either.<LINE>
+Perhaps if you asked<LINE>
+someone else...<CHOICE E4>
+
+
+
+//[01F128 = 0028]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $50)
+<CODE B0>That's right! Thank<LINE>
+you! Kitako!<CHOICE E4>
+
+
+
+//[01F13E = 0029]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $52)
+Yui arrives at the<LINE>
+course where Dibot<LINE>
+awaits.<STOP E5>
+
+
+
+//[01F158 = 002A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $54)
+<CODE B0>Tee-hee!<CODE B1> What is it<LINE>
+this time, young<LINE>
+lady?<CHOICE E4>
+
+
+
+//[01F176 = 002B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $56)
+Um... There's<LINE>
+something I'd like<LINE>
+you to tell me.<STOP E5>
+
+
+
+//[01F196 = 002C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $58)
+<CODE B0>Tee-hee!<CODE B1> In that<LINE>
+case... Allow me to<LINE>
+instruct you in my<LINE>
+gentle love<LINE>
+technique.<STOP E5>
+
+
+
+//[01F1C4 = 002D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $5A)
+It turns out Dibot is<LINE>
+a lech.<CHOICE E4>
+
+
+
+//[01F1D8 = 002E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $5C)
+<CODE B0>Absolutely not! This<LINE>
+guy is a perv!<CHOICE E4>
+
+
+
+//[01F1F2 = 002F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $5E)
+<CODE B0>I have to do this one<LINE>
+way or another.<CHOICE E4>
+
+
+
+//[01F1FE = 0030]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $60)
+<CODE B0>Do you know anything<LINE>
+about a panel with<LINE>
+switches for the<LINE>
+numbers 1-9, and the<LINE>
+letters WIPST?<STOP E5>
+
+
+
+//[01F23A = 0031]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $62)
+1-9, and WIPST...<LINE>
+I shall tell you.<LINE>
+However... only with<LINE>
+conditions!<STOP E5>
+
+
+
+//[01F272 = 0032]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $64)
+Huh? What conditions?<STOP E5>
+
+
+
+//[01F284 = 0033]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $66)
+One, that you become<LINE>
+my girlfriend!<STOP E5>
+
+
+
+//[01F29A = 0034]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $68)
+<CODE B0>Huh?! Absolutely not!<STOP E5>
+
+
+
+//[01F2B0 = 0035]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $6A)
+Or if that won't do...
+You must win a match<LINE>
+against me! Which one<LINE>
+will you choose?<CHOICE E4>
+
+
+
+//[01F2D6 = 0036]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $6C)
+What should I do?<STOP E5>
+
+
+
+//[01F2E2 = 0037]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $6E)
+<CODE B0>Excuse me!<LINE>
+You there choosing the
+commands! Yes! You!<LINE>
+Even if you're fine<LINE>
+with it, I shall<LINE>
+absolutely not become<LINE>
+this perv's girl-<LINE>
+friend. Got it?!<CHOICE E4>
+
+
+
+//[01F33C = 0038]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $70)
+<CODE B0>All right! I'll play a
+round!<STOP E5>
+
+
+
+//[01F34C = 0039]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $72)
+<CODE B0>Tee-hee!<CODE B1> I see! In<LINE>
+that case, how about a
+quick 1 hole match?<STOP E5>
+
+
+
+//[01F378 = 003A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $74)
+Fine! In exchange, if<LINE>
+I win you'll tell me<LINE>
+about the panel!<STOP E5>
+
+
+
+//[01F3A0 = 003B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $76)
+Of course!<CODE B0> I hate<LINE>
+lies, you know.<STOP E5>
+
+
+
+//[01F3B6 = 003C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $78)
+Yui decides to play<LINE>
+Dibot.<CHOICE E4>
+
+
+
+//[01F3D2 = 003D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $7A)
+<CODE B0>Well, young lady! Are<LINE>
+you still game?<CHOICE E4>
+
+
+
+//[01F3EE = 003E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $7C)
+Yui has a rematch with
+Dibot.<CHOICE E4>
+
+
+
+//[01F408 = 003F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $7E)
+Okay! In that case,<LINE>
+come again!<CHOICE E4>
+
+
+
+//[01F418 = 0040]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $80)
+I win.<STOP E5>
+
+
+
+//[01F422 = 0041]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $82)
+It looks that way.<STOP E5>
+
+
+
+//[01F42E = 0042]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $84)
+Come on now, a promise
+is a promise! Tell me<LINE>
+about the panel.<STOP E5>
+
+
+
+//[01F446 = 0043]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $86)
+<CODE B0>Sorry. Actually, I<LINE>
+don't know anything<LINE>
+about any panel.<STOP E5>
+
+
+
+//[01F46A = 0044]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $88)
+<CODE B0>What did you say?! You
+tricked me!<STOP E5>
+
+
+
+//[01F47E = 0045]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $8A)
+<CODE B0>Now, now, hold on! I<LINE>
+don't know whether or<LINE>
+not it will be help-<LINE>
+ful, but I'll tell you
+how to conquer my new<LINE>
+course! To start with,
+whack a driver shot.<LINE>
+Next, progress to a<LINE>
+nice position at the<LINE>
+edge of the green with
+a 3 iron. From there,<LINE>
+chip in using a sand<LINE>
+wedge in one fell<LINE>
+swoop!<CODE B1> To me a putter<LINE>
+is unnecessary.<STOP E5>
+
+
+
+//[01F526 = 0046]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $8C)
+What the heck is<LINE>
+that?! What I want to<LINE>
+know is...<STOP E5>
+
+
+
+//[01F540 = 0047]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $8E)
+<CODE B0>Tee-hee!<LINE>
+<CODE B8><CODE B1><CODE B9>Tch,<CODE B8> tch,<CODE B9> tch...<CODE B2><CODE BB><LINE>
+However...<LINE>
+That guy told me,<LINE>
+but... What would you<LINE>
+do if you were<LINE>
+Professor G?!<STOP E5>
+
+
+
+//[01F58C = 0048]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $90)
+Huh-! Professor G!<STOP E5>
+
+
+
+//[01F5A2 = 0049]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $92)
+<CODE B0>In other words... It's
+like that!<STOP E5>
+
+
+
+//[01F5B6 = 004A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $94)
+<CODE B0>Thank you! Dibot!<STOP E5>
+
+
+
+//[01F5CA = 004B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $96)
+<CODE B0>If you want to be my<LINE>
+girlfriend, please<LINE>
+come anytime. I'll be<LINE>
+waiting!<STOP E5>
+
+
+
+//[01F5F0 = 004C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $98)
+<CODE B0>I'll take a rain<LINE>
+check, thank you very<LINE>
+much!<STOP E5>
+
+
+
+//[01F606 = 004D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $9A)
+<CODE B0>Tee-hee!<CODE B1> I can't hear<LINE>
+you too well!<CHOICE E4>
+
+
+
+//[01F618 = 004E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $9C)
+<STOP E5>
+
+
+//[01F61A = 004F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $9E)
+Now the door should be
+open.<STOP E5>
+
+
+
+//[01F62E = 0050]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $A0)
+There should be a room
+on the other side of<LINE>
+the wall.<CHOICE E4>
+
+
+
+//[01F646 = 0051]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $A2)
+To start with, I have<LINE>
+to get this guy open.<CHOICE E4>
+
+
+
+//[01F658 = 0052]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $A4)
+Gotta input the<LINE>
+keyword.<CHOICE E4>
+
+
+
+//[01F66C = 0053]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $A6)
+The keyword via the<LINE>
+club names... Enter it
+like I heard from<LINE>
+Dibot. Then all that's
+left is...!<CHOICE E4>
+
+
+
+//[01F6A8 = 0054]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $A8)
+Ugh...<STOP E5>
+
+
+
+//[01F6AE = 0055]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $AA)
+It got really weak.<LINE>
+However... I can still
+hear it!<CHOICE E4>
+
+
+
+//[01F6CC = 0056]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $AC)
+That is not needed<LINE>
+right now.<CHOICE E4>
+
+
+
+//[01F6D8 = 0057]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $AE)
+Yui operates the<LINE>
+panel.<CHOICE E4>
+
+
+
+//[01F6EA = 0058]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $B0)
+Please enter the<LINE>
+keyword using the pad
+and the A and C<LINE>
+buttons. You can<LINE>
+cancel with the B<LINE>
+button.<CHOICE E4>
+
+
+
+//[01F728 = 0059]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $B2)
+The keyword is<LINE>
+incorrect.<CHOICE E4>
+
+
+
+//[01F73A = 005A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $B4)
+<CODE B0>I did it!<LINE>
+In here should be the<LINE>
+key to solving all the
+mysteries.<CODE B1><CHOICE E4>
+
+
+
+//[01F764 = 005B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $B6)
+<CODE B0>Yui enters the room<LINE>
+behind the wall.<CHOICE E4>
+
+
+
+//[01F77E = 005C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $B8)
+Inside the room sits<LINE>
+an injured man with<LINE>
+his head hung down.<STOP E5>
+
+
+
+//[01F7A6 = 005D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $BA)
+<CODE B0>A-Are you okay? Gasp!<LINE>
+I-It's you! The one<LINE>
+who saved me!<CHOICE E4>
+
+
+
+//[01F7DC = 005E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $BC)
+Are you okay?! Hang in
+there! You're... the<LINE>
+one who rescued me,<LINE>
+aren't you! Just who<LINE>
+are you?!<STOP E5>
+
+
+
+//[01F820 = 005F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $BE)
+Ugh... Uugh... I-It's<LINE>
+you.<CHOICE E4>
+
+
+
+//[01F834 = 0060]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $C0)
+<CODE B0>This is the room where
+I was modified!<CHOICE E4>
+
+
+
+//[01F84C = 0061]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $C2)
+It's the person who<LINE>
+released me!<CHOICE E4>
+
+
+
+//[01F862 = 0062]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $C4)
+Anyhow, I have to<LINE>
+listen.<CHOICE E4>
+
+
+
+//[01F876 = 0063]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $C6)
+To start with, I have<LINE>
+to question this<LINE>
+person.<CHOICE E4>
+
+
+
+//[01F88A = 0064]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $C8)
+Who in the world are<LINE>
+you?<STOP E5>
+
+
+
+//[01F8A2 = 0065]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $CA)
+I am... Doctor T...<LINE>
+I'm the chemist... who
+modified... you and<LINE>
+Ran!<CHOICE E4>
+
+
+
+//[01F8D4 = 0066]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $CC)
+<CODE B0>You did?!<CHOICE E4>
+
+
+
+//[01F8DC = 0067]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $CE)
+<CODE B0>Why?! Why do such an<LINE>
+awful thing?!<STOP E5>
+
+
+
+//[01F8F4 = 0068]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $D0)
+I-I had no choice...<CHOICE E4>
+
+
+
+//[01F906 = 0069]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $D2)
+<CODE B0>Ran! What happened to<LINE>
+her?<STOP E5>
+
+
+
+//[01F91C = 006A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $D4)
+I... I'm sorry... I<LINE>
+wasn't able to...<LINE>
+rescue her.<CHOICE E4>
+
+
+
+//[01F93A = 006B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $D6)
+<CODE B0>Please tell me! Who is
+Professor G?!<STOP E5>
+
+
+
+//[01F95C = 006C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $D8)
+H-He's... my... older<LINE>
+brother.<STOP E5>
+
+
+
+//[01F974 = 006D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $DA)
+<CODE B0>What?!<CHOICE E4>
+
+
+
+//[01F97E = 006E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $DC)
+<CODE B0>Tell me what you know!
+<CODE B1>I... I should have a<LINE>
+right to know.<STOP E5>
+
+
+
+//[01F9B6 = 006F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $DE)
+<CODE B0>V-Very well... I'll<LINE>
+reveal everything!<LINE>
+Everything about... my
+brother G... So...<STOP E5>
+
+
+
+//[01FA08 = 0070]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $E0)
+Doctor T told me all<LINE>
+about Dark Hazzard,<LINE>
+and the battle<LINE>
+golfers.<STOP E5>
+
+
+
+//[01FA1E = 0071]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $E2)
+<CODE B8>My brother<CODE C0> and I<LINE>
+researched cybernetics
+in <CODE C1>Massachusetts<CODE BE>.<LINE>
+Finally, we perfected<LINE>
+our theory. In order<LINE>
+to prove our research<LINE>
+theory, my brother<LINE>
+proposed offering his<LINE>
+own body. I objected,<LINE>
+of course. However, my
+brother's... No! We<LINE>
+couldn't overcome our<LINE>
+curiosity as chemists.
+My brother's mod-<LINE>
+ification operation<LINE>
+was successful.<LINE>
+However, there was a<LINE>
+serious flaw in our<LINE>
+research theory. All<LINE>
+power exceeded that of
+a human being!<STOP E5>
+
+
+
+//[01FB4E = 0072]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $E4)
+<CODE BC>From that moment on my
+brother was changed.<LINE>
+He modified people<LINE>
+according to his own<LINE>
+whims. He began<LINE>
+introducing himself as
+Professor G, and<LINE>
+founded Dark Hazzard.<STOP E5>
+
+
+
+//[01FBA8 = 0073]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $E6)
+<CODE BD>But it's not possible<LINE>
+to turn just anyone<LINE>
+into a battle golfer.<LINE>
+A human being able to<LINE>
+conform to a cyber<LINE>
+body is necessary. It<LINE>
+turns out you and Ran<LINE>
+are among those.<STOP E5>
+
+
+
+//[01FC1A = 0074]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $E8)
+<CODE BA>I planned to stop him<LINE>
+one way or another.<LINE>
+However, it was<LINE>
+already too late.<LINE>
+Please! Yui! Please<LINE>
+destroy my... Please<LINE>
+destroy Professor G,<LINE>
+and Dark Hazzard! I<LINE>
+know you can... No!<LINE>
+There is no one else<LINE>
+who can! When flame<LINE>
+and thunderbolt<LINE>
+unite...<STOP E5>
+
+
+
+//[01FCA8 = 0075]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $EA)
+That's far enough!<STOP E5>
+
+
+
+//[01FCB2 = 0076]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $EC)
+<CODE B0>Urk-!<STOP E5>
+
+
+
+//[01FCBA = 0077]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $EE)
+<CODE B0>Doctor T!<STOP E5>
+
+
+
+//[01FCC4 = 0078]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $F0)
+<CODE BB>Hmph! Were you not my<LINE>
+little brother I'd<LINE>
+have killed you long<LINE>
+ago! Damn you! You<LINE>
+accursed traitor! Yui!
+Meet me outside! I<LINE>
+shall test your<LINE>
+strength!<CHOICE E4>
+
+
+
+//[01FD2C = 0079]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $F2)
+I have to hear what<LINE>
+Doctor T has to say.<CHOICE E4>
+
+
+
+//[01FD3E = 007A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $F4)
+Besides...<CHOICE E4>
+
+
+
+//[01FD48 = 007B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $F6)
+Yui and G go outside.<CHOICE E4>
+
+
+
+//[01FD58 = 007C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $F8)
+<CODE B0>You care nothing of<LINE>
+other people...<LINE>
+Professor G! I'll<LINE>
+never forgive you!<STOP E5>
+
+
+
+//[01FD84 = 007D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $FA)
+Heh, heh-heh-heh...<LINE>
+Other people? What<LINE>
+about them! I can say<LINE>
+beyond a doubt that we
+battle golfers are the
+ultimate humans!<STOP E5>
+
+
+
+//[01FDCA = 007E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $FC)
+<CODE B0>Dear god...!<CHOICE E4>
+
+
+
+//[01FDD6 = 007F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $FE)
+<CODE B0>For this guy<LINE>
+alone...!<CHOICE E4>
+
+
+
+//[01FDE8 = 0080]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $100)
+<CODE B0>I shall play any<LINE>
+course!<CHOICE E4>
+
+
+
+//[01FDFE = 0081]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $102)
+<CODE B0>I shall absolutely<LINE>
+defeat this guy!<CHOICE E4>
+
+
+
+//[01FE10 = 0082]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $104)
+<CODE B0>Ran... Give me back<LINE>
+Ran!<STOP E5>
+
+
+
+//[01FE20 = 0083]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $106)
+Roar! Black Fire!<LINE>
+You will be united<LINE>
+later... after<LINE>
+completing your brain<LINE>
+modification!<CHOICE E4>
+
+
+
+//[01FE5E = 0084]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $108)
+<CODE B0>What are you up to<LINE>
+with these battle<LINE>
+golfers?!<STOP E5>
+
+
+
+//[01FE7E = 0085]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $10A)
+Utopia!<LINE>
+To create a true<LINE>
+utopia with the<LINE>
+ultimate humans under<LINE>
+my rule!<STOP E5>
+
+
+
+//[01FEB6 = 0086]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $10C)
+You're mad...<CHOICE E4>
+
+
+
+//[01FEC0 = 0087]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $10E)
+Why?!<LINE>
+Why was I chosen to be
+a battle golfer?!<STOP E5>
+
+
+
+//[01FEE0 = 0088]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $110)
+The two of you are the
+ultimate raw materials
+for battle golfers.<CHOICE E4>
+
+
+
+//[01FF14 = 0089]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $112)
+What are you trying to
+accomplish with this<LINE>
+tournament?!<STOP E5>
+
+
+
+//[01FF2A = 008A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $114)
+It is all for the sake
+of your personal<LINE>
+growth!<STOP E5>
+
+
+
+//[01FF42 = 008B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $116)
+My growth?! What do<LINE>
+you mean?!<STOP E5>
+
+
+
+//[01FF52 = 008C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $118)
+Ran's perfect training
+is already complete.<LINE>
+Therefore, it is<LINE>
+necessary to have you<LINE>
+train as well!<STOP E5>
+
+
+
+//[01FF98 = 008D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $11A)
+Why?!<STOP E5>
+
+
+
+//[01FF9E = 008E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $11C)
+If you want to know,<LINE>
+then fight me!<CHOICE E4>
+
+
+
+//[01FFB0 = 008F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $11E)
+Black Fire! One born<LINE>
+of Dark Hazzard<LINE>
+returns to Dark<LINE>
+Hazzard.<STOP E5>
+
+
+
+//[01FFE0 = 0090]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $120)
+<CODE B0>You will be burned<LINE>
+with black flames.<CHOICE E4>
+
+
+
+//[01FFF6 = 0091]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $122)
+Finally, you have come
+home to me. Black<LINE>
+Fire! Heh-heh-heh...<STOP E5>
+
+
+
+//[020020 = 0092]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $124)
+Yui reigns over a<LINE>
+world of darkness as a
+battle golfer of Dark<LINE>
+Hazzard.<CHOICE E4>
+
+
+
+//[02004E = 0093]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $126)
+<CODE B0>I win!<LINE>
+Now, join me, Ran!<STOP E5>
+
+
+
+//[020066 = 0094]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $128)
+Splendid! Black Fire.<CHOICE E4>
+
+
+
+//[02007C = 0095]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $12A)
+Now Dark Hazzard is<LINE>
+finished, too!<STOP E5>
+
+
+
+//[020096 = 0096]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $12C)
+I wonder about<LINE>
+that...!<CHOICE E4>
+
+
+
+//[0200A4 = 0097]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $12E)
+Does he look strange?<CHOICE E4>
+
+
+
+//[0200B2 = 0098]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $130)
+There's no point in<LINE>
+investigating<LINE>
+anymore.<CHOICE E4>
+
+
+
+//[0200C4 = 0099]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $132)
+<CODE B0>No! You aren't<LINE>
+planning to self-<LINE>
+destruct the way YUI<LINE>
+did, are you?<CHOICE E4>
+
+
+
+//[0200EE = 009A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $134)
+<CODE B0>Give Ran back!<STOP E5>
+
+
+
+//[0200FA = 009B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $136)
+Do you think Ran...<LINE>
+No! Do you think<LINE>
+'Shadow Thunder'<LINE>
+wishes that?!<STOP E5>
+
+
+
+//[020126 = 009C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $138)
+<CODE B0>What did you say?!<LINE>
+What do you mean?!<STOP E5>
+
+
+
+//[02013A = 009D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $13A)
+Before long you'll-...
+Gurh-!<STOP E5>
+
+
+
+//[02014C = 009E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $13C)
+<CODE B8>G collapses.<CHOICE E4>
+
+
+
+//[020160 = 009F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $13E)
+<CODE B0>H-Huh! What the?!<STOP E5>
+
+
+
+//[02016E = 00A0]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $140)
+<CODE B9>Apparently...<LINE>
+My time has come.<CHOICE E4>
+
+
+
+//[020186 = 00A1]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $142)
+But I must hear about<LINE>
+G.<CHOICE E4>
+
+
+
+//[020198 = 00A2]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $144)
+What do you mean your<LINE>
+time has come?!<STOP E5>
+
+
+
+//[0201AC = 00A3]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $146)
+Even a battle<LINE>
+golfer... is not<LINE>
+immortal. A cyber body
+does not age. However,
+the living brain<LINE>
+reaches its life span.
+To top it off, the<LINE>
+pace is much faster<LINE>
+than that of a normal<LINE>
+human.<CHOICE E4>
+
+
+
+//[020228 = 00A4]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $148)
+What happens when it<LINE>
+reaches its life<LINE>
+span?!<STOP E5>
+
+
+
+//[02023C = 00A5]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $14A)
+The cyber body has<LINE>
+been controlled via<LINE>
+the brain's commands.<LINE>
+Therefore, when the<LINE>
+brain reaches its life
+span, the cyber body,<LINE>
+running out of<LINE>
+control, is destroyed<LINE>
+from the inside out!<STOP E5>
+
+
+
+//[0202AE = 00A6]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $14C)
+<CODE B0>This can't be! That's<LINE>
+absurd!<CHOICE E4>
+
+
+
+//[0202BA = 00A7]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $14E)
+<CODE B0>I... I don't want<LINE>
+this!<CHOICE E4>
+
+
+
+//[0202C8 = 00A8]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $150)
+Why must Ran and I be<LINE>
+the perfect battle<LINE>
+golfers?<STOP E5>
+
+
+
+//[0202F6 = 00A9]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $152)
+You two will fight,<LINE>
+and the winner will<LINE>
+succeed me as ruler of
+Dark Hazzard!<STOP E5>
+
+
+
+//[02032C = 00AA]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $154)
+<CODE B0>No! Ran and I fight?!<STOP E5>
+
+
+
+//[020346 = 00AB]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $156)
+Heh-heh-heh-heh...<LINE>
+Whether you like it or
+not, that's how it is.
+Okui! No, Shadow<LINE>
+Thunder! Now is the<LINE>
+time. Undo the<LINE>
+transformation!<LINE>
+And then...<LINE>
+Fight Black Fire!<CODE BA><STOP E5>
+
+
+
+//[02039C = 00AC]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $158)
+<CODE B0>No way! Okui is Ran?!<STOP E5>
+
+
+
+//[0203B0 = 00AD]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $15A)
+Black Fire! Fight me.<LINE>
+And...<LINE>
+I shall defeat you!<STOP E5>
+
+
+
+//[0203DE = 00AE]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $15C)
+<CODE BB>Okui reveals her true<LINE>
+identity!<STOP E5>
+
+
+
+//[0203F4 = 00AF]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $15E)
+<CODE B0>Ran! You're Ran,<LINE>
+aren't you?...<STOP E5>
+
+
+
+//[020402 = 00B0]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $160)
+Black Fire!<LINE>
+Come to my status<LINE>
+course! There I'll eat
+you alive.<STOP E5>
+
+
+
+//[020434 = 00B1]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $162)
+<CODE B0>Wait! Ran!<STOP E5>
+
+
+
+//[02043E = 00B2]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $164)
+<CODE BC>Ran departs.<STOP E5>
+
+
+
+//[02044E = 00B3]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $166)
+Ran...?<STOP E5>
+
+
+
+//[020456 = 00B4]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $168)
+<CODE B9>Ha-ha-ha-ha... Now<LINE>
+everything is going<LINE>
+the way I planned!<LINE>
+Now, fight! Fight!<LINE>
+Ah-ha-ha-ha...<LINE>
+<CODE C7><CODE C4><CODE C5><CODE C0><CODE C0>Cough-<CODE C1><CODE C1> Gh<CODE C2><CODE C2>a-!<CODE C3><CODE C3><CODE C6><CODE C5><CODE C0><CODE C0><CODE C1><CODE C1><CODE C2><CODE C2><CODE C3><CODE C3><CODE C6><CODE C5><CODE C0><CODE C0><CODE C1><CODE C1><CODE C2><CODE C2><CODE C3><CODE C3><CODE C6><CODE C5><CODE C0><CODE C0><CODE C1><CODE C1><CODE C2><CODE C2><CODE C3><CODE C3><CODE C6><CODE C5><CODE C0><CODE C0><CODE C1><CODE C1><CODE C2><CODE C2><CODE C3><CODE C3><CODE C6><CODE C0><CODE BD><STOP E5>
+
+
+
+//[0204D0 = 00B5]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $16A)
+We'll end up like this<LINE>
+too...<CHOICE E4>
+
+
+
+//[0204E2 = 00B6]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $16C)
+There is no answer.<LINE>
+It looks like nothing<LINE>
+more than a pile of<LINE>
+junk.<CHOICE E4>
+
+
+
+//[0204FE = 00B7]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $16E)
+Huh? There's something
+inside the pocket.<CHOICE E4>
+
+
+
+//[020514 = 00B8]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $170)
+What shall I do? What should I do?<CHOICE E4>
+
+
+
+//[020526 = 00B9]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $172)
+There is no one to<LINE>
+hear me speak.<CHOICE E4>
+
+
+
+//[020538 = 00BA]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $174)
+There's a creepy flute
+inside the pocket.<CHOICE E4>
+
+
+
+//[020556 = 00BB]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $176)
+Yui acquires G's<LINE>
+flute.<CHOICE E4>
+
+
+
+//[020568 = 00BC]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $178)
+There's no point in<LINE>
+investigating any<LINE>
+further.<CHOICE E4>
+
+
+
+//[02057A = 00BD]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $17A)
+I have to go to Ran's<LINE>
+place, but... Where is
+Ran's status course?<CHOICE E4>
+
+
+
+//[0205A2 = 00BE]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $17C)
+Yui uses YUI's face<LINE>
+parts. However nothing
+happens.<CHOICE E4>
+
+
+
+//[0205CA = 00BF]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $17E)
+<CODE C0>Yui uses YUI's<LINE>
+hairband. Lights fly<LINE>
+around in her head.<STOP E5>
+
+
+
+//[0205F8 = 00C0]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $180)
+Ugh, uuugh...!<STOP E5>
+
+
+
+//[020602 = 00C1]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $182)
+Yui learns the skill<LINE>
+"Black Fire", and the<LINE>
+location of Ran's<LINE>
+status course.<CHOICE E4>
+
+
+
+//[020632 = 00C2]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $184)
+Yui uses the Key of<LINE>
+Zeal. However, nothing
+happens.<CHOICE E4>
+
+
+
+//[020656 = 00C3]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $186)
+Yui uses G's flute.<LINE>
+However, nothing<LINE>
+happens.<CHOICE E4>
+
+
+
+//[020676 = 00C4]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $188)
+Ran! I have to join<LINE>
+Ran...<CHOICE E4>
+
+
+
+//[020688 = 00C5]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $18A)
+Yui heads for the<LINE>
+course where Ran<LINE>
+awaits.<CHOICE E4>
+
+
+
+//[02069E = 00C6]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $234)
+#WRITEOFS(PtrTable2, $236)
+#WRITEOFS(PtrTable2, $18C)
+<CODE B0>Yui arrives at the<LINE>
+course where Ran<LINE>
+awaits.<STOP E5>
+
+
+
+//[0206B4 = 00C9]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $238)
+#WRITEOFS(PtrTable2, $18E)
+Welcome! Black Fire!<LINE>
+It's you or me... It's
+the fate of one of us<LINE>
+to succeed the ruler<LINE>
+of Dark Hazzard. That<LINE>
+fate is inescapable!<CHOICE E4>
+
+
+
+//[020708 = 00CB]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $23A)
+#WRITEOFS(PtrTable2, $190)
+<CODE B0>Ran! It's me! It's<LINE>
+Yui! Don't you know<LINE>
+me?!<STOP E5>
+
+
+
+//[020720 = 00CD]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $23C)
+#WRITEOFS(PtrTable2, $192)
+I am Shadow Thunder! I
+don't know any 'Ran'!<CHOICE E4>
+
+
+
+//[020742 = 00CF]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $23E)
+#WRITEOFS(PtrTable2, $194)
+She's completely lost<LINE>
+her past.<CHOICE E4>
+
+
+
+//[020756 = 00D1]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $240)
+#WRITEOFS(PtrTable2, $196)
+Ran's status course...
+I'm sure there will be
+something there!<CHOICE E4>
+
+
+
+//[020778 = 00D3]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $242)
+#WRITEOFS(PtrTable2, $198)
+<CODE B0>What should I do?<CHOICE E4>
+
+
+
+//[02078A = 00D5]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $244)
+#WRITEOFS(PtrTable2, $19A)
+Why were you disguised
+as a caddie?<STOP E5>
+
+
+
+//[0207A2 = 00D7]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $246)
+#WRITEOFS(PtrTable2, $19C)
+It was in order to<LINE>
+help you to grow.<LINE>
+Additionally, in<LINE>
+order to collect and<LINE>
+analyze your data!<CHOICE E4>
+
+
+
+//[0207E4 = 00D9]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $248)
+#WRITEOFS(PtrTable2, $19E)
+<CODE B0>Ran! Please remember<LINE>
+me! And, remember<LINE>
+yourself!<STOP E5>
+
+
+
+//[020808 = 00DB]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $24A)
+#WRITEOFS(PtrTable2, $1A0)
+Human beings are<LINE>
+foolish! Where<LINE>
+memories exist there<LINE>
+is necessarily<LINE>
+suffering! I am the<LINE>
+ultimate human. The<LINE>
+perfect battle<LINE>
+golfer! I am far and<LINE>
+away a superior<LINE>
+existence!<CHOICE E4>
+
+
+
+//[02087A = 00DD]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $24C)
+#WRITEOFS(PtrTable2, $1A2)
+<CODE B0>Professor G is gone!<LINE>
+So, why must we fight<LINE>
+for Dark Hazzard?!<STOP E5>
+
+
+
+//[0208BC = 00DF]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $24E)
+#WRITEOFS(PtrTable2, $1A4)
+It is because Lord G<LINE>
+is gone that a new<LINE>
+ruler is necessary!<LINE>
+Otherwise... Dark<LINE>
+Hazzard will be no<LINE>
+more!<CHOICE E4>
+
+
+
+//[020900 = 00E1]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $250)
+#WRITEOFS(PtrTable2, $1A6)
+<CODE B0>If Dark Hazzard is no<LINE>
+more, then good! It<LINE>
+should be destroyed!<STOP E5>
+
+
+
+//[02092C = 00E3]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $252)
+#WRITEOFS(PtrTable2, $1A8)
+Those are dangerous<LINE>
+thoughts! You mustn't<LINE>
+succeed Dark Hazzard<LINE>
+after all! Come on!<LINE>
+Fight me, Black Fire!<STOP E5>
+
+
+
+//[020978 = 00E5]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $254)
+#WRITEOFS(PtrTable2, $1AA)
+<CODE B0>It seems it doesn't<LINE>
+matter what I say!<LINE>
+Fine. Come on! Come at
+me! Ran!<CHOICE E4>
+
+
+
+//[0209A2 = 00E7]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $256)
+#WRITEOFS(PtrTable2, $1AC)
+You will be pierced<LINE>
+with a thunderbolt of<LINE>
+shadow!<STOP E5>
+
+
+
+//[0209B8 = 00E9]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $258)
+#WRITEOFS(PtrTable2, $1AE)
+<CODE B0>You will be burned<LINE>
+with black flames.<CHOICE E4>
+
+
+
+//[0209CE = 00EB]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $25A)
+#WRITEOFS(PtrTable2, $1B0)
+I am the next ruler!<LINE>
+You will live as my<LINE>
+henchman!<STOP E5>
+
+
+
+//[0209FA = 00ED]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $25C)
+#WRITEOFS(PtrTable2, $1B2)
+Yui reigns over a<LINE>
+world of darkness as a
+battle golfer of Dark<LINE>
+Hazzard.<CHOICE E4>
+
+
+
+//[020A2A = 00EF]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $25E)
+#WRITEOFS(PtrTable2, $1B4)
+It's over! Ran! This<LINE>
+is the end!<STOP E5>
+
+
+
+//[020A40 = 00F1]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $260)
+#WRITEOFS(PtrTable2, $1B6)
+This is fate. From<LINE>
+this day forth you are
+the next ruler. Rule<LINE>
+our Dark Hazzard.<CHOICE E4>
+
+
+
+//[020A7E = 00F3]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $262)
+#WRITEOFS(PtrTable2, $1B8)
+<CODE B0>I shall not! I<LINE>
+absolutely refuse to<LINE>
+rule anything!<STOP E5>
+
+
+
+//[020AA0 = 00F5]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $264)
+#WRITEOFS(PtrTable2, $1BA)
+You cannot do that!<LINE>
+You cannot deny your<LINE>
+fate.<CHOICE E4>
+
+
+
+//[020AC6 = 00F7]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $266)
+#WRITEOFS(PtrTable2, $1BC)
+She will not return to
+the way she was.<CHOICE E4>
+
+
+
+//[020AD2 = 00F9]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $268)
+#WRITEOFS(PtrTable2, $1BE)
+<CODE B0>There's no point in<LINE>
+investigating any<LINE>
+further.<CHOICE E4>
+
+
+
+//[020AE4 = 00FB]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $26A)
+#WRITEOFS(PtrTable2, $1C0)
+One way or another, I<LINE>
+have to restore Ran's<LINE>
+memory.<CHOICE E4>
+
+
+
+//[020AFA = 00FD]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $26C)
+#WRITEOFS(PtrTable2, $1C2)
+Ran! What will you<LINE>
+do?<STOP E5>
+
+
+
+//[020B0C = 00FF]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $26E)
+#WRITEOFS(PtrTable2, $1C4)
+The bidding of the<LINE>
+ruler.<CHOICE E4>
+
+
+
+//[020B18 = 0101]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $270)
+#WRITEOFS(PtrTable2, $1C6)
+Is there something I<LINE>
+can do with my current
+possessions?<CHOICE E4>
+
+
+
+//[020B32 = 0103]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $272)
+#WRITEOFS(PtrTable2, $1C8)
+Yui uses YUI's face<LINE>
+parts. However, noth-<LINE>
+ing happens.<CHOICE E4>
+
+
+
+//[020B5A = 0105]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $274)
+#WRITEOFS(PtrTable2, $1CA)
+It's already equipped.<CHOICE E4>
+
+
+
+//[020B6A = 0107]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $276)
+#WRITEOFS(PtrTable2, $1CC)
+Yui uses the Key of<LINE>
+Zeal. However, nothing
+happens.<CHOICE E4>
+
+
+
+//[020B8E = 0109]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $278)
+#WRITEOFS(PtrTable2, $1CE)
+What should I do?<CHOICE E4>
+
+
+
+//[020B96 = 010B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $27A)
+#WRITEOFS(PtrTable2, $1D0)
+<CODE B0>Is it really okay to<LINE>
+blow it?<CHOICE E4>
+
+
+
+//[020BA8 = 010D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $27C)
+#WRITEOFS(PtrTable2, $1D2)
+<CODE B0>Is it really okay to<LINE>
+break it?<CHOICE E4>
+
+
+
+//[020BBA = 010F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $27E)
+#WRITEOFS(PtrTable2, $1D4)
+I wonder what will<LINE>
+happen if I blow it?<CHOICE E4>
+
+
+
+//[020BCA = 0111]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $280)
+#WRITEOFS(PtrTable2, $1D6)
+I wonder what will<LINE>
+happen if I break it?<CHOICE E4>
+
+
+
+//[020BDC = 0113]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $282)
+#WRITEOFS(PtrTable2, $1D8)
+<CODE B0>I cannot hesitate any<LINE>
+longer! There's<LINE>
+nothing left but to<LINE>
+blow it.<STOP E5>
+
+
+
+//[020BF2 = 0115]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $284)
+#WRITEOFS(PtrTable2, $1DA)
+Yui blows G's flute.<LINE>
+Professor G's voice<LINE>
+resounds in her head!<STOP E5>
+
+
+
+//[020C1C = 0117]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $286)
+#WRITEOFS(PtrTable2, $1DC)
+One born of Dark<LINE>
+Hazzard returns to<LINE>
+Dark Hazzard!<STOP E5>
+
+
+
+//[020C44 = 0119]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $288)
+#WRITEOFS(PtrTable2, $1DE)
+<CODE B8><CODE B0>Ughaaah... My head...<LINE>
+My head is splitting<LINE>
+in two!<CODE B8><STOP E5>
+
+
+
+//[020C68 = 011B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $28A)
+#WRITEOFS(PtrTable2, $1E0)
+Professor G's flute<LINE>
+resonates with Yui's<LINE>
+hairband. After a<LINE>
+violent shock, Yui<LINE>
+awakes reborn as Dark<LINE>
+Hazzard's new ruler,<LINE>
+Black Fire. And the<LINE>
+world is enveloped in<LINE>
+darkness.<CHOICE E4>
+
+
+
+//[020CEE = 011D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $28C)
+#WRITEOFS(PtrTable2, $1E2)
+<CODE B0>I cannot hesitate any<LINE>
+more! There's nothing<LINE>
+left but to break it.<STOP E5>
+
+
+
+//[020D06 = 011F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $28E)
+#WRITEOFS(PtrTable2, $1E4)
+Yui breaks G's flute.<STOP E5>
+
+
+
+//[020D16 = 0121]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $290)
+#WRITEOFS(PtrTable2, $1E6)
+<CODE B8>Eeek-!<CODE B0><STOP E5>
+
+
+
+//[020D24 = 0123]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $292)
+#WRITEOFS(PtrTable2, $1E8)
+Ran's whole body<LINE>
+trembles fiercely and<LINE>
+she collapses.<CHOICE E4>
+
+
+
+//[020D50 = 0125]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $294)
+#WRITEOFS(PtrTable2, $1EA)
+<CODE B0>Ran!... Ran! Hang in<LINE>
+there! Ran!<STOP E5>
+
+
+
+//[020D68 = 0127]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $296)
+#WRITEOFS(PtrTable2, $1EC)
+Ughuugh... Where...<LINE>
+Where am I? Yui? It's<LINE>
+Yui!<STOP E5>
+
+
+
+//[020D92 = 0129]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $298)
+#WRITEOFS(PtrTable2, $1EE)
+<CODE B0>Thank goodness! Ran!<LINE>
+Your memory is back!<CHOICE E4>
+
+
+
+//[020DAC = 012B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $29A)
+#WRITEOFS(PtrTable2, $1F0)
+<CODE B0>Her memory is back!<CODE B1><CHOICE E4>
+
+
+
+//[020DBC = 012D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $29C)
+#WRITEOFS(PtrTable2, $1F2)
+<CODE B0>I don't want to think<LINE>
+about anything...<CHOICE E4>
+
+
+
+//[020DD2 = 012F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $29E)
+#WRITEOFS(PtrTable2, $1F4)
+<CODE B0>Are you okay? Ran! Can
+you stand?<STOP E5>
+
+
+
+//[020DE8 = 0131]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2A0)
+#WRITEOFS(PtrTable2, $1F6)
+Huh? Yes, I'm okay!<LINE>
+Never mind that, what<LINE>
+have I...?<STOP E5>
+
+
+
+//[020E0E = 0133]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2A2)
+#WRITEOFS(PtrTable2, $1F8)
+I'll... explain...<LINE>
+later... Come on, Ran!
+<CODE B0>Give me your hand.<LINE>
+Hang on.<STOP E5>
+
+
+
+//[020E40 = 0135]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2A4)
+#WRITEOFS(PtrTable2, $1FA)
+<CODE B0><CODE B1>Okay! Thank you, Yui!<CHOICE E4>
+
+
+
+//[020E50 = 0137]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $1FE)
+#WRITEOFS(PtrTable2, $200)
+#WRITEOFS(PtrTable2, $2A6)
+#WRITEOFS(PtrTable2, $2A8)
+#WRITEOFS(PtrTable2, $1FC)
+<CODE B0>Hagata, will you join<LINE>
+me for training to<LINE>
+increase my level?<STOP E5>
+
+
+
+//[020E7C = 013C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $202)
+For my Mistress,<LINE>
+anything! A 1 hole<LINE>
+match, however.<STOP E5>
+
+
+
+//[020EA0 = 013D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $204)
+<CODE B0>That's fine!<CHOICE E4>
+
+
+
+//[020EA6 = 013E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $206)
+<CODE B0>What a pity. How about
+it - play once more?<CHOICE E4>
+
+
+
+//[020ECC = 013F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $208)
+Yui decides to have a<LINE>
+rematch with Hagata.<CHOICE E4>
+
+
+
+//[020EE4 = 0140]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $20A)
+I see. Well then, come
+see me again. I'm<LINE>
+always here.<CHOICE E4>
+
+
+
+//[020F0E = 0141]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $20C)
+My Mistress is strong<LINE>
+after all. Please come
+train again any time.<STOP E5>
+
+
+
+//[020F3C = 0142]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $20E)
+<CODE B0>Yeah! Thank you!<CHOICE E4>
+
+
+
+//[020F4A = 0143]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $210)
+<CODE B0>Kitako! Will you join<LINE>
+me in my training?<STOP E5>
+
+
+
+//[020F70 = 0144]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $212)
+Sure! It's my<LINE>
+pleasure! Just 1 hole,
+though!<STOP E5>
+
+
+
+//[020F98 = 0145]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $214)
+That's fine!<CHOICE E4>
+
+
+
+//[020F9E = 0146]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $216)
+<CODE B0>Something like that<LINE>
+isn't going to beat<LINE>
+Dark Hazzard! Play<LINE>
+once more?<CHOICE E4>
+
+
+
+//[020FC8 = 0147]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $218)
+Yui decides to have a<LINE>
+rematch with Kitako.<CHOICE E4>
+
+
+
+//[020FDE = 0148]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $21A)
+Oh, well, come any<LINE>
+time if you want to<LINE>
+practice!<STOP E5>
+
+
+
+//[021000 = 0149]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $21C)
+Yeah! Thanks! I<LINE>
+shall.<CHOICE E4>
+
+
+
+//[021012 = 014A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $21E)
+That's the spirit!<LINE>
+Come again any time if
+you want to train.<STOP E5>
+
+
+
+//[02103A = 014B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $220)
+Yeah! Thanks! I<LINE>
+shall.<CHOICE E4>
+
+
+
+//[02104C = 014C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $222)
+Hey, Dibot. Will you<LINE>
+be my training<LINE>
+partner?<STOP E5>
+
+
+
+//[021078 = 014D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $224)
+For you, any time! The
+contest will be 1<LINE>
+hole, though.<STOP E5>
+
+
+
+//[0210A2 = 014E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $226)
+Okay! That's fine.<CHOICE E4>
+
+
+
+//[0210AE = 014F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $228)
+<CODE B0>Was I a little too<LINE>
+serious, I wonder?<LINE>
+Well! Will you play<LINE>
+once more?!<CHOICE E4>
+
+
+
+//[0210DA = 0150]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $22A)
+Yui decides to have a<LINE>
+rematch with Dibot.<CHOICE E4>
+
+
+
+//[0210F4 = 0151]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $22C)
+Come any time if you<LINE>
+want to train with me!
+I'll be waiting.<STOP E5>
+
+
+
+//[02111C = 0152]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $22E)
+Thanks! I shall.<CHOICE E4>
+
+
+
+//[02112A = 0153]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $230)
+<CODE B0>Tee-hee.<CODE B1> Nice job!<LINE>
+Come again if you want
+a training partner!<STOP E5>
+
+
+
+//[021158 = 0154]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $232)
+Thanks! I shall.<CHOICE E4>
+
+
+
+//[021166 = 0155]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2AA)
+That's too bad. I want
+to see a strong<LINE>
+mistress. I won't hand
+over the key to my<LINE>
+Mistress as you are<LINE>
+now.<STOP E5>
+
+
+
+//[0211A0 = 0156]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2AC)
+All right. I'll play<LINE>
+once more! This time I
+absolutely won't<LINE>
+lose!<STOP E5>
+
+
+
+//[0211C8 = 0157]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2AE)
+Yui decides to have a<LINE>
+rematch with Hagata.<CHOICE E4>
+
+
+
+//[0211E0 = 0158]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2B0)
+Well! That's my<LINE>
+ability! But, if you<LINE>
+don't defeat me, you<LINE>
+won't receive the<LINE>
+key.<STOP E5>
+
+
+
+//[021214 = 0159]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2B2)
+All right. Play me<LINE>
+once more! This time I
+absolutely shall not<LINE>
+lose!<STOP E5>
+
+
+
+//[021240 = 015A]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2B4)
+Yui decides to have a<LINE>
+rematch with Kitako.<CHOICE E4>
+
+
+
+//[021256 = 015B]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2B6)
+I win! So, on second<LINE>
+thought, will you be<LINE>
+my girlfriend?<STOP E5>
+
+
+
+//[021286 = 015C]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2B8)
+Would you give it a<LINE>
+rest?! If you win,<LINE>
+okay, if you win!<STOP E5>
+
+
+
+//[0212AA = 015D]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2BA)
+Yui decides to have a<LINE>
+rematch with Dibot.<CHOICE E4>
+
+
+
+//[0212C4 = 015E]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2BC)
+That's too bad. I want
+to see a strong<LINE>
+mistress. I can't tell
+anything to my<LINE>
+Mistress as you are<LINE>
+now.<STOP E5>
+
+
+
+//[021300 = 015F]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2BE)
+All right. I'll play<LINE>
+once more! This time I
+absolutely shall not<LINE>
+lose!<STOP E5>
+
+
+
+//[021328 = 0160]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2C0)
+Yui decides to have a<LINE>
+rematch with Hagata.<CHOICE E4>
+
+
+
+//[021340 = 0161]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2C2)
+Well! That's my<LINE>
+ability! But, if you<LINE>
+don't defeat me, I<LINE>
+cannot tell you about<LINE>
+the panel.<STOP E5>
+
+
+
+//[021376 = 0162]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2C4)
+All right. Play me<LINE>
+once more! This time I
+absolutely shall not<LINE>
+lose!<STOP E5>
+
+
+
+//[0213A2 = 0163]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2C6)
+Yui decides to have a<LINE>
+rematch with Kitako.<CHOICE E4>
+
+
+
+//[0213B8 = 0164]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2C8)
+I win! So, on second<LINE>
+thought, will you be<LINE>
+my girlfriend?<STOP E5>
+
+
+
+//[0213E8 = 0165]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2CA)
+Would you give it a<LINE>
+rest?! If you win,<LINE>
+okay, if you win!<STOP E5>
+
+
+
+//[02140C = 0166]
+#ALIGN(2)
+#WRITEOFS(PtrTable2, $2CC)
+Yui decides to have a<LINE>
+rematch with Dibot.<CHOICE E4>
+
+
+
+// END FILE script
+///////////////////////////////////////////////
+
+
+
+#JMP($A0000)
+
+
+
+//=============================================================================
+// Miscellaneous adventure mode text
+//=============================================================================
+
+#ALIGN(4)
+
+// [0x4CFE]
+#W32($481A)
+ STATUS  
+         
+LV       
+         
+SP       
+         
+EXP      
+
+// Keypad minigame instructions
+
+// [0x9414]
+#W32($8EB6)
+                   
+Pad - Move Cursor
+
+// [0x9434]
+#W32($8ED4)
+                   
+A, C - Push Button 
+
+// [0x9450]
+#W32($8EF2)
+                   
+B - Quit Operating 
+
+// [0x946C]
+#W32($92E0)
+「Looks like the  
+keyword's wrong.」
+
+
+
+//=============================================================================
+// Adventure mode dialogue choice tilemaps.
+// Make sure every line is padded to 9 characters with spaces.
+//=============================================================================
+
+#ALIGN(4)
+
+// Update base position of tilemaps
+#W32($99CE)
+
+// [0x640CC]
+         
+Speak    
+
+// [0x640DA]
+         
+Ask      
+
+// [0x640E8]
+         
+Check    
+
+// [0x640F6]
+         
+Think    
+
+// [0x64104]
+         
+Move     
+
+// [0x64112]
+         
+Tease    
+
+// [0x64120]
+         
+Anger    
+
+// [0x6412E]
+         
+Items    
+
+// [0x6413C]
+         
+Praise   
+
+// [0x6414A]
+         
+Take     
+
+// [0x64158]
+         
+Blow     
+
+// [0x64166]
+         
+Break    
+
+// [0x64174]
+         
+Punch    
+
+// [0x64182]
+         
+Play     
+
+// [0x64190]
+         
+Operate  
+
+// [0x6419E]
+         
+         
+
+// [0x641AC]
+         
+Ran      
+
+// [0x641BA]
+         
+Hazzard  
+
+// [0x641C8]
+         
+Shouko   
+
+// [0x641D6]
+         
+Letter   
+
+// [0x641E4]
+         
+Hagata   
+
+// [0x641F2]
+         
+Kitako   
+
+// [0x64200]
+         
+Dibot    
+
+// [0x6420E]
+         
+YUI      
+
+// [0x6421C]
+         
+G        
+
+// [0x6422A]
+         
+Course   
+
+// [0x64238]
+         
+R.Room   
+
+// [0x64246]
+         
+Zeal Key 
+
+// [0x64254]
+         
+S.Key    
+
+// [0x64262]
+         
+No.1 Key 
+
+// [0x64270]
+         
+Woman    
+
+// [0x6427E]
+         
+Desk     
+
+// [0x6428C]
+         
+Key      
+
+// [0x6429A]
+         
+Panel    
+
+// [0x642A8]
+         
+Man      
+
+// [0x642B6]
+         
+Shelves  
+
+// [0x642C4]
+         
+Desk     
+
+// [0x642D2]
+         
+Room     
+
+// [0x642E0]
+         
+Wall     
+
+// [0x642EE]
+         
+Book     
+
+// [0x642FC]
+         
+Door     
+
+// [0x6430A]
+         
+Yes      
+
+// [0x64318]
+         
+No       
+
+// [0x64326]
+         
+Self     
+
+// [0x64334]
+         
+Tourney  
+
+// [0x64342]
+         
+G.Flute  
+
+// [0x64350]
+         
+F.Parts  
+
+// [0x6435E]
+         
+Hairband 
+
+// [0x6436C]
+         
+Date Him 
+
+// [0x6437A]
+         
+Man      
+
+// [0x64388]
+         
+Dr. T    
+
+// [0x64396]
+         
+Ran      
+
+// [0x643A4]
+         
+Ground   
+
+// [0x643B2]
+         
+G        
+
+
+
+//=============================================================================
+// Credits tilemaps.
+// Originals have varying widths; increased to uniform 36 tiles wide for the
+// sake of simplicity.
+// Make sure every line is padded to 36 characters with spaces.
+//=============================================================================
+
+#ALIGN(4)
+
+#W32($5002)
+// [0x578C]
+             - STAFF -              
+
+#W32($52D2)
+// [0x5796]
+              PLANNER               
+
+#W32($52E6)
+// [0x579E]
+              SCENARIO              
+
+#W32($52FA)
+// [0x57A6]
+         CHARACTER DESIGNER         
+
+#W32($530E)
+// [0x57B8]
+          GRAPHIC DESIGNER          
+
+#W32($5322)
+// [0x57C8]
+             PROGRAMMER             
+
+#W32($5336)
+// [0x57D2]
+               SOUND                
+
+#W32($534A)
+// [0x57D8]
+           SPECIAL THANKS           
+
+#W32($501E)
+#W32($5056)
+// [0x57E6]
+                                    
+           Kin-chan 68000           
+
+#W32($503A)
+// [0x57FA]
+                                    
+            Shumire-chan            
+
+#W32($5072)
+// [0x5808]
+                                    
+             Ano Okata              
+
+#W32($508E)
+#W32($50E2)
+// [0x5814]
+                                    
+            Mappira-kun             
+
+#W32($50AA)
+#W32($50C6)
+// [0x5820]
+                                    
+          Hitorin-Bakaitai          
+
+#W32($50FE)
+// [0x5834]
+                                    
+             Toshi-chan             
+
+#W32($511A)
+// [0x583E]
+                                    
+              Kan-chan              
+
+#W32($5136)
+// [0x5848]
+                                    
+               Tatta                
+
+#W32($5152)
+// [0x584E]
+                                    
+             Catharine              
+
+#W32($516E)
+// [0x5858]
+                                    
+            Tsukasa-chan            
+
+#W32($518A)
+// [0x5864]
+                                    
+        Thought so Maru-chan        
+
+#W32($51A6)
+// [0x587A]
+                                    
+         Naka-chan the 3rd          
+
+#W32($51C2)
+// [0x588C]
+                                    
+           Kenta-kun. No!           
+
+#W32($51DE)
+// [0x589E]
+                                    
+              Kyohorin              
+
+#W32($51FA)
+// [0x58AA]
+                                    
+                LAR                 
+
+#W32($5216)
+// [0x58B0]
+                                    
+                 BO                 
+
+#W32($5252)
+// [0x58B6]
+    "Hey..."                        
+
+#W32($5272)
+// [0x58BE]
+                   "What is it?"    
+
+
+
+//================================================================
+// Intro. Originals are variable-width; switched to uniform 36x2
+// for simplicity's sake.
+//================================================================
+
+#ALIGN(4)
+
+// [0x658B6]
+#W32($6574E)
+    "O great-and-powerful ruler,    
+           Professor G!"            
+
+// [0x658E6]
+#W32($65758)
+"These are the two the computer came
+        up with this time."         
+
+// [0x6592E]
+#W32($65762)
+"They are considered to be ideal for
+     the battle golfer bodies."     
+
+// [0x65972]
+#W32($6576C)
+ "For the first body, Yui Mizuhara."  
+                                    
+
+// [0x6599C]
+#W32($65776)
+   "For the second, Ran Ryuzaki."     
+                                    
+
+// [0x659C6]
+#W32($65780)
+   "May I seek our great ruler's    
+             judgment?"             
+
+// [0x659F8]
+#W32($6578A)
+       "Hmm... I am pleased."       
+                                    
+
+// [0x65A06]
+#W32($65794)
+  "Bring them to me immediately!"   
+                                    
+
+// [0x65A2E]
+#W32($6579E)
+The evil organization Dark Hazzard, 
+                                    
+
+// [0x65A4A]
+#W32($657A8)
+ which looks to Professor G as its  
+               ruler,               
+
+// [0x65A7A]
+#W32($657B2)
+ plots to take over the world using 
+         "battle golfers".          
+
+// [0x65AB8]
+#W32($657BC)
+               "Yui!"               
+                                    
+
+// [0x65ABE]
+#W32($657C6)
+  "From this day forth you will be  
+    reborn as a battle golfer!"     
+
+// [0x65AFA]
+#W32($657D0)
+ "Then you will become my faithful  
+       servant, Black Fire."        
+
+// [0x65B42]
+#W32($657DA)
+              "Nooo-!"              
+                                    
+
+// [0x65B48]
+#W32($657E4)
+       "H-Huh, what the-!"       
+                                    
+
+// [0x65B64]
+#W32($657EE)
+        "Stop! You bastard!"        
+                                    
+
+// [0x65B6E]
+#W32($657F8)
+            "Ah-! Ghaa!"            
+                                    
+
+// [0x65B80]
+#W32($65802)
+           "Can you walk?           
+                                    
+
+// [0x65B88]
+#W32($6580C)
+           "Can you walk?           
+ The exit is over there! Hurry, go!"
+
+// [0x65BBC]
+#W32($65816)
+          "W-Who are you?"          
+                                    
+
+// [0x65BCE]
+#W32($65820)
+   "There's no time to explain!"    
+                                    
+
+// [0x65BE0]
+#W32($6582A)
+"What about Ran?                    
+                                    
+
+// [0x65BE6]
+#W32($65834)
+"What about Ran? There was a black- 
+    haired girl, wasn't there?!"    
+
+// [0x65C1E]
+#W32($6583E)
+  "Yes, I know her. I'll save her   
+               too!"                
+
+// [0x65C58]
+#W32($65848)
+"Grr-!... What are you doing! Hurry 
+            up and go!"             
+
+// [0x65C76]
+#W32($65852)
+ Yui, rescued by a mysterious man,  
+   was successful in her escape.    
+
+// [0x65CB6]
+#W32($6585C)
+    Several days passed. Then...    
+                                    
+
+// [0x65CDE]
+#W32($65866)
+ "I haven't heard from Ran at all." 
+                                    
+
+// [0x65D08]
+#W32($65870)
+"And just who was that man who saved
+              me?..."               
+
+// [0x65D24]
+#W32($6587A)
+    ... A match play tournament     
+sponsored by the Hazzard Foundation 
+
+// [0x65D62]
+#W32($65884)
+      at Ghyll Country Club...      
+                                    
+
+// [0x65D86]
+#W32($6588E)
+             "Hazzard!"             
+                                    
+
+// [0x65D94]
+#W32($65898)
+ "If I enter this tournament, maybe 
+      I'll get some answers!"       
+
+// [0x65DC8]
+#W32($658A2)
+  "Ghyll Country Club... I have no  
+         choice but to go!"         
+
+// [0x65DF8]
+#W32($658AC)
+  Yui, on her own, heads for Ghyll  
+           Country Club.            
+
+
+
+//================================================================
+// Good ending part 1. Originals are variable-width; switched to
+// uniform 36 tiles for simplicity's sake.
+//================================================================
+
+#ALIGN(4)
+
+//=================
+// SCREEN 1
+//=================
+
+// [0x6014]
+#W32($5F92)
+       It happens in a flash.       
+                                    
+                                    
+                                    
+
+//=================
+// SCREEN 2
+//=================
+
+// [0x603A]
+#W32($5F9C)
+       Could anyone have been       
+                                    
+        able to predict it?         
+                                    
+
+// [0x6066]
+#W32($5FA6)
+   This undoubtedly demonstrates    
+                                    
+         Doctor T's words,          
+                                    
+
+// [0x60A2]
+#W32($5FB0)
+"When flame and thunderbolt unite." 
+                                    
+                                    
+                                    
+
+//=================
+// SCREEN 3
+//=================
+
+// [0x60CA]
+#W32($5FBA)
+  In order to lay Dark Hazzard to   
+                                    
+rest, Dr. T covertly placed a bomb  
+                                    
+
+// [0x60E8]
+#W32($5FC4)
+     within the organization's      
+                                    
+    underground atomic reactor.     
+                                    
+
+// [0x610E]
+#W32($5FCE)
+   Furthermore, the bomb's switch   
+                                    
+ incorporates Yui and Ran's bodies. 
+                                    
+
+// [0x612E]
+#W32($5FD8)
+                                    
+                                    
+
+// [0x614C]
+#W32($5FE2)
+                                    
+                                    
+
+//=================
+// SCREEN 4
+//=================
+
+// [0x6176]
+#W32($5FEC)
+    Flame... In short, Yui, and     
+                                    
+Thunderbolt... Ran, are now joined! 
+                                    
+
+// [0x6190]
+#W32($5FF6)
+      All has come to an end.       
+                                    
+                                    
+                                    
+
+// [0x61B8]
+#W32($6000)
+                                    
+                                    
+
+//=================
+// SCREEN 5
+//=================
+
+// [0x61D4]
+#W32($600A)
+   Along with many sacrifices...    
+                                    
+                                    
+                                    
+
+//================================================================
+// Good ending part 2. Originals are variable-width; switched to
+// uniform 36 tiles for simplicity's sake.
+//================================================================
+
+#ALIGN(4)
+
+// [0x624E]
+#W32($61F4)
+      "Special news bulletin."      
+                                    
+
+// [0x6274]
+#W32($61FE)
+   Today, at approximately 2:30pm   
+                                    
+
+// [0x628C]
+#W32($6208)
+    there was a large explosion     
+         of unknown causes          
+
+// [0x62BA]
+#W32($6212)
+     apparently accompanied by      
+        countless casualties        
+
+// [0x62E2]
+#W32($621C)
+     at a match play tournament     
+                                    
+
+// [0x62F8]
+#W32($6226)
+       that was being held at       
+        Ghyll Country Club.         
+
+// [0x6322]
+#W32($6230)
+   The cause of the explosion has   
+     still not been determined.     
+
+// [0x635C]
+#W32($623A)
+      Numbers of deceased are       
+        approximately 20,000        
+
+// [0x637A]
+#W32($6244)
+    while numbers of wounded...     
+                                    
+
+
+//=============================================================================
+// Shop text (not used)
+//=============================================================================
+
+#ALIGN(4)
+
+// [0x6C62]
+#W32($6726)
+"Welcome. Everything is cheap here!"
+
+// [0x6C8E]
+#W32($67B8)
+"Go on, take your time and browse!"
+
+// [0x6CA0]
+#W32($69EE)
+"Is that okay?"
+
+// [0x6CB8]
+#W32($6B78)
+"Thank you. You need something else don't you?"
+
+// [0x6CE2]
+#W32($6BB8)
+"Oh my. You don't have enough money."
+
+// [0x6D00]
+#W32($67F2)
+"Are you leaving?"
+
+// [0x6D0A]
+#W32($6894)
+"Come again!"
+
+// [0x6D16]
+#W32($6806)
+Leave
+
+// [0x6D22]
+#W32($681A)
+Keep Shopping
+
+// [0x6D38]
+#W32($6A5E)
+"You can hold up to 5 things."
+
+// [0x6D5C]
+"You need something else don't you?"
+
+// [0x6D6C]
+#W32($68CC)
+Drink S   100 G
+
+// [0x6D88]
+#W32($68DE)
+Drink L   500 G
+
+// [0x6DA4]
+#W32($68F0)
+Lucky Card  200 G
+
+// [0x6DC0]
+#W32($695A)
+"It's a medicine that will recover SP slightly."
+
+// [0x6DEC]
+#W32($6972)
+"It's a medicine that will recover SP completely."
+
+// [0x6E1A]
+#W32($698A)
+"It's a mysterious card that will recover luck."
+
+// [0x6E46]
+#W32($6A06)
+Buy
+
+// [0x6E48]
+#W32($6A1E)
+On Second Thought...
+
+// [0x6E5A]
+#W32($6AE4)
+Drink S
+
+// [0x6E66]
+#W32($6B02)
+Drink L
+
+// [0x6E72]
+#W32($6B20)
+Lucky Card
+
+// [0x6E80]
+#W32($6B3E)
+Money
+
+
+//=============================================================================
+// Intro profiles
+//=============================================================================
+
+#ALIGN(4)
+
+// [0x3F4C]
+#W32($2B22)
+#W32($2C64)
+#W32($2D7C)
+NAME
+
+// [0x3F50]
+#W32($2B40)
+#W32($2C82)
+#W32($2D9A)
+AGE
+
+// [0x3F54]
+#W32($2B5E)
+#W32($2CA0)
+#W32($2DB8)
+PHYSIQUE
+
+// [0x3F5C]
+#W32($2B7C)
+#W32($2DD6)
+//　゛　　　　　　　　
+//ミスハラ　ユイ　　　
+YUI MIZUHARA
+
+// [0x3F6A]
+#W32($2B9A)
+#W32($2DF4)
+16
+
+// [0x3F6C]
+#W32($2BB8)
+#W32($2E12)
+HT.160 WT.48  
+B80 W58 H83   
+
+// [0x3F84]
+#W32($2CBE)
+//　　　゛　　　　　　
+//リュウサキ　ラン　　
+RAN RYUZAKI 
+
+// [0x3F94]
+#W32($2CDC)
+17
+
+// [0x3F96]
+#W32($2CFA)
+HT.164 WT.50  
+B83 W60 H85   
+
+
+//=============================================================================
+// Sound test
+//=============================================================================
+
+#ALIGN(4)
+
+// [0x23F4]
+#W32($22A8)
+MUSIC BOX
+
+// [0x23FE]
+#W32($22C6)
+PUSH START BUTTON - EXIT
+
+// [0x2416]
+  GOLF GO GO  
+
+// [0x2424]
+  GOLF OLE!   
+
+// [0x2432]
+ INTRODUCTION 
+
+// [0x2440]
+   SMILE ON   
+
+// [0x244E]
+ THEME HAGATA 
+
+// [0x245C]
+ THEME KITAKO 
+
+// [0x246A]
+ THEME DIBOT  
+
+// [0x2478]
+ THEME R-YUI  
+
+// [0x2486]
+   SILENCE    
+
+// [0x2494]
+  LABORATORY  
+
+// [0x24A2]
+   AMBITION   
+
+// [0x24B0]
+MAD PROFESSOR 
+
+// [0x24BE]
+  THEME RAN   
+
+// [0x24CC]
+REST IN PEACE 
+
+// [0x24DA]
+    FINALE    
+
+// [0x24E8]
+  SELECTION   
+
+// [0x24F6]
+ HOLE IN ONE! 
+
+// [0x2504]
+    WINNER    
+
+// [0x2512]
+     EVEN     
+
+// [0x2520]
+    LOSER     
+
+// [0x252E]
+  DEEP OVER   
+
+// [0x253C]
+     DUE      
+
+// [0x254A]
+   BOMB OUT   
+
+// [0x2558]
+   FADE OUT   
+
+// [0x2566]
+   TEE SHOT   
+
+// [0x2574]
+  TAKE A PAT  
+
+// [0x2582]
+ FALL ON SAND 
+
+// [0x2590]
+     LAFF     
+
+// [0x259E]
+    BOUND     
+
+// [0x25AC]
+     PIN      
+
+// [0x25BA]
+   NUKE IT    
+
+// [0x25C8]
+  EXPLOSION   
+
+// [0x25D6]
+  FAT BOMBER  
+
+// [0x25E4]
+ DIP IN WATER 
+
+// [0x25F2]
+    CUP IN    
+
+// [0x2600]
+     OOPS     
+
+// [0x260E]
+    HIT ME    
+
+// [0x261C]
+     BEEP     
+
+// [0x262A]
+ BOTTLE OPEN  
+
+// [0x2638]
+   MESSAGE    
+
+// [0x2646]
+ JUMPING JACK 
+
+// [0x2654]
+    NOISE     
+
+// [0x2662]
+   PHONE 1    
+
+// [0x2670]
+   PHONE 2    
+
+// [0x267E]
+   PHONE 3    
+
+// [0x268C]
+    DOOR 1    
+
+// [0x269A]
+    DOOR 2    
+
+// [0x26A8]
+    UPPER     
+
+// [0x26B6]
+    LOWER     
+
+// [0x26C4]
+   GASAGOSO   
+
+// [0x26D2]
+  NICE SHOT   
+
+// [0x26E0]
+  LONG CLAP   
+
+// [0x26EE]
+  SHORT CLAP  
+
+//=============================================================================
+// Title screen, password get screen
+//=============================================================================
+
+#ALIGN(4)
+
+// [0x7370]
+#W32($430E)
+#W32($4338)
+#W32($4362)
+#W32($438C)
+#W32($711A)
+#W32($73AC)
+#W32($73D4)
+PUSH START BUTTON
+
+// Password get message -- pad to 22 characters
+
+// [0x72F6]
+#W32($70A2)
+ The password to see  
+ the broadcast so far 
+
+// [0x7322]
+#W32($70C0)
+   has been given.    
+                      
+
+// [0x7334]
+#W32($70DE)
+Please look forward to
+      continuing      
+
+// [0x735C]
+#W32($70FC)
+  Battle Golfer Yui.  
+                      
+
+// [0x7382]
+#W32($7138)
+PASSWORD
+
+#ALIGN(2)
+
+// [0x1B04]
+#W32($1ACC)
+<$05> <$00>S<$00>E<$00>G<$00>A<$00> <$00>1<$00>9<$00>9<$00>1
+
+#ALIGN(2)
+
+// [0x401C]
+#W32($3FE4)
+<$11><$9D><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$19><$9D>
+<$01><$9E><$00> <$00> <$00>A<$00>D<$00>V<$00>E<$00>N<$00>T<$00>U<$00>R<$00>E<$00> <$00>M<$00>O<$00>D<$00>E<$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00>G<$00>O<$00>L<$00>F<$00> <$00>P<$00>L<$00>A<$00>Y<$00> <$00>M<$00>O<$00>D<$00>E<$00> <$09><$9E>
+<$01><$9D><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$09><$9D>
+
+
+#ALIGN(2)
+
+// [0x40DA]
+//#W32($442C)
+//<$11><$9D><$01><$A1><$00>M<$00>E<$00>S<$00>S<$00>A<$00>G<$00>E<$01><$A1><$19><$9D>
+//<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+//<$01><$9E><$00> <$00> <$00>F<$00>A<$00>S<$00>T<$00> <$00> <$00> <$09><$9E>
+//<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+//<$01><$9E><$00> <$00> <$00>M<$00>I<$00>D<$00>D<$00>L<$00>E<$00> <$09><$9E>
+//<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+//<$01><$9E><$00> <$00> <$00>S<$00>L<$00>O<$00>W<$00> <$00> <$00> <$09><$9E>
+//<$01><$9D><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$09><$9D>
+
+// [0x40DA]
+#W32($442C)
+<$11><$9D><$01><$A1><$00>M<$00>E<$00>S<$00>S<$00>A<$00>G<$00>E<$00>S<$01><$A1><$19><$9D>
+<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00>F<$00>A<$00>S<$00>T<$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00>M<$00>E<$00>D<$00>I<$00>U<$00>M<$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00>S<$00>L<$00>O<$00>W<$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9D><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$09><$9D>
+
+
+#ALIGN(2)
+
+// [0x418A]
+#W32($448E)
+<$11><$9D><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$19><$9D>
+<$01><$9E><$00> <$00> <$00>C<$00>O<$00>N<$00>T<$00>I<$00>N<$00>U<$00>E<$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00>N<$00>E<$00>W<$00> <$00>G<$00>A<$00>M<$00>E<$00> <$09><$9E>
+<$01><$9D><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$09><$9D>
+
+
+#ALIGN(2)
+
+// [0x420C]
+#W32($4508)
+<$11><$9D><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$01><$A1><$19><$9D>
+<$01><$9E><$00> <$00> <$00>M<$00>A<$00>T<$00>C<$00>H<$00> <$00> <$00>P<$00>L<$00>A<$00>Y<$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$09><$9E>
+<$01><$9E><$00> <$00> <$00>S<$00>T<$00>R<$00>O<$00>K<$00>E<$00> <$00>P<$00>L<$00>A<$00>Y<$00> <$09><$9E>
+<$01><$9D><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$11><$A1><$09><$9D>
+
+
+
+//=============================================================================
+// Password screen
+//=============================================================================
+
+#ALIGN(4)
+
+// [0x76AC]
+#W32($74D8)
+ENTER THE PASSWORD
+
+// [0x76BE]
+#W32($7AE6)
+//  Incorrect  
+//  password!  
+Incorrect password!
+                   
+
+// [0x76D8]
+#W32($74F6)
+A B C D E  F G H I J
+
+// [0x76EC]
+#W32($7514)
+K L M N O  P Q R S T
+
+// [0x7700]
+#W32($7532)
+U V W X Y  Z a b c d
+
+// [0x7714]
+#W32($7550)
+e f g h i  j k l m n
+
+// [0x7728]
+#W32($756E)
+o p q r s  t u v w x
+
+// [0x773C]
+#W32($758C)
+y z ! ? -           
+
+
+
+//=============================================================================
+// Splash screen (added for hack)
+//=============================================================================
+
+#ALIGN(4)
+#W32($FF000)
+                                        
+                                        
+                                        
+      「WINNERS DON'T SELL REPROS」       
+                                        
+   This is a free translation patch.    
+    It should not be sold under any     
+             circumstances.             
+                                        
+  Any money made off this patch has     
+          gone to bootleggers.          
+                                        
+                                        
+                                        
+           Battle Golfer Yui            
+       English translation, 2017        
+                                        
+                                        
+      Translation,         Filler       
+      Initial Work                      
+                                        
+      Hacking, Art         Supper       
+                                        
+                                        
+      Original Tools,      Guest        
+      Special Thanks                    
+                                        
+                                        
+// end of splash screen
+
+
+#VAR(Table2,TABLE)
+#ADDTBL("table/golfer_table_menu.txt", Table2)
+#ACTIVETBL(Table2)
+
+
+
+//=============================================================================
+// Golf mode
+//=============================================================================
+
+#ALIGN(4)
+
+// [0x1796A]
+#W32($1A74C)
+// Match Play submenu
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>M<$A0>A<$A0>T<$A0>C<$A0>H<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>V<$A0>S<$A0>.<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>E<$A0>R<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>V<$A0>S<$A0>.<$A0>@@<$A0>C<$A0>P<$A0>U<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+
+// Stroke Play submenu
+// [0x17898]
+#W32($1A714)
+//#JMP($17898)
+//<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+//<$A0><$A3><$A0>@@<$A0>S<$A0>T<$A0>R<$A0>O<$A0>K<$A0>E<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>1<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>@@<$A0>S<$A0>T<$A0>A<$A0>R<$A0>T<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>2<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>@@<$A0>S<$A0>T<$A0>A<$A0>R<$A0>T<$A0>@@<$A8><$A3>
+//<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>S<$A0>T<$A0>R<$A0>O<$A0>K<$A0>E<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>1<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>E<$A0>R<$A0>@@<$A0>S<$A0>T<$A0>A<$A0>R<$A0>T<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>2<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>E<$A0>R<$A0>@@<$A0>S<$A0>T<$A0>A<$A0>R<$A0>T<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+
+// [0x1ADF2]
+#W32($1A954)
+// List of CPU opponents for Match Play vs. CPU mode
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>H<$A0>a<$A0>g<$A0>a<$A0>t<$A0>a<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>K<$A0>i<$A0>t<$A0>a<$A0>k<$A0>o<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>D<$A0>i<$A0>b<$A0>o<$A0>t<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>Y<$A0>U<$A0>I<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>G<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+
+//#JMP($15AD8)
+
+// [0x15AD8]
+// Action menu for golf mode
+#W32($C644)
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>@@<$A0>S<$A0>H<$A0>O<$A0>T<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>C<$A0>O<$A0>U<$A0>R<$A0>S<$A0>E<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>G<$A0>R<$A0>E<$A0>E<$A0>N<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>C<$A0>A<$A0>D<$A0>D<$A0>I<$A0>E<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>S<$A0>C<$A0>O<$A0>R<$A0>E<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##
+<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$00> <$A0><$A3><$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A8><$A3><$00> <$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+
+//#JMP($16456)
+
+// [0x16456]
+//#W32($12574)
+//<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>W<$A0>I<$A0>N<$A0>N<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>Y<$A0>u<$A0>i<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>E<$A0>V<$A0>E<$A0>N<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+
+// [0x16456]
+// inter-match results box
+#W32($12574)
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>W<$A0>I<$A0>N<$A0>N<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>Y<$A0>u<$A0>i<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+
+// this overwrites the "WINNER" section of the above if the match was a draw
+#W32($126C4)
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>E<$A0>V<$A0>E<$A0>N<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+
+// Skill menu background.
+// The game composites the names of the unlocked skills onto this.
+// original is 0xf * 0x14 = 0x12C bytes; now 0xf * 0x15 = 0x13B bytes
+// [0x15BB0]
+#W32($C72A)
+// Two-line version (old)
+//<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+//<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+//<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+// One-line version (new)
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+//#JMP($15E08)
+// [0x15E08]
+// Skill menu
+#W32($C740)
+// Two-line version (old)
+//<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##
+//<$A0>@@<$A0>S<$A0>P<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+//<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+//<$A0>C<$A0>E<$A0>N<$A0>T<$A0>R<$A0>A<$A0>L<$A0>@@<$A0>@@<$A0>2<$A0>@@
+//<$A0>@@<$A0>@@<$A0>L<$A0>E<$A0>A<$A0>G<$A0>U<$A0>E<$A0>@@<$A0>@@<$A0>@@
+//<$A0>P<$A0>A<$A0>C<$A0>I<$A0>F<$A0>I<$A0>C<$A0>@@<$A0>@@<$A0>2<$A0>@@
+//<$A0>@@<$A0>@@<$A0>L<$A0>E<$A0>A<$A0>G<$A0>U<$A0>E<$A0>@@<$A0>@@<$A0>@@
+//<$A0>K<$A0>A<$A0>M<$A0>A<$A0>I<$A0>-<$A0>@@<$A0>@@<$A0>@@<$A0>4<$A0>@@
+//<$A0>@@<$A0>@@<$A0>T<$A0>A<$A0>I<$A0>C<$A0>H<$A0>I<$A0>@@<$A0>@@<$A0>@@
+//<$A0>S<$A0>P<$A0>I<$A0>N<$A0>N<$A0>I<$A0>N<$A0>G<$A0>@@<$A0>5<$A0>@@
+//<$A0>@@<$A0>@@<$A0>@@<$A0>P<$A0>A<$A0>N<$A0>E<$A0>L<$A0>@@<$A0>@@<$A0>@@
+//<$A0>D<$A0>.<$A0>@@<$A0>M<$A0>A<$A0>R<$A0>I<$A0>O<$A0>-<$A0>6<$A0>@@
+//<$A0>@@<$A0>@@<$A0>@@<$A0>N<$A0>E<$A0>T<$A0>T<$A0>E<$A0>@@<$A0>@@<$A0>@@
+//<$A0>A<$A0>Q<$A0>U<$A0>A<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>6<$A0>@@
+//<$A0>@@<$A0>@@<$A0>H<$A0>O<$A0>P<$A0>P<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@
+//<$A0>P<$A0>S<$A0>Y<$A0>C<$A0>H<$A0>O<$A0>@@<$A0>@@<$A0>@@<$A0>6<$A0>@@
+//<$A0>@@<$A0>@@<$A0>H<$A0>O<$A0>L<$A0>D<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@
+//<$A0>B<$A0>L<$A0>A<$A0>C<$A0>K<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>8<$A0>@@
+//<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>F<$A0>I<$A0>R<$A0>E<$A0>@@<$A0>@@<$A0>@@
+// One-line version (new)
+<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##
+<$A0>@@<$A0>S<$A0>P<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>C<$A0>E<$A0>N<$A0>T<$A0>R<$A0>A<$A0>L<$A0>@@<$A0>L<$A0>E<$A0>A<$A0>G<$A0>U<$A0>E<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>P<$A0>A<$A0>C<$A0>I<$A0>F<$A0>I<$A0>C<$A0>@@<$A0>L<$A0>E<$A0>A<$A0>G<$A0>U<$A0>E<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>K<$A0>A<$A0>M<$A0>A<$A0>I<$A0>T<$A0>A<$A0>C<$A0>H<$A0>I<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>S<$A0>P<$A0>I<$A0>N<$A0>N<$A0>I<$A0>N<$A0>G<$A0>@@<$A0>P<$A0>A<$A0>N<$A0>E<$A0>L<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>D<$A0>@@<$A0>M<$A0>A<$A0>R<$A0>I<$A0>O<$A0>N<$A0>E<$A0>T<$A0>T<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>A<$A0>Q<$A0>U<$A0>A<$A0>@@<$A0>H<$A0>O<$A0>P<$A0>P<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>P<$A0>S<$A0>Y<$A0>C<$A0>H<$A0>O<$A0>@@<$A0>H<$A0>O<$A0>L<$A0>D<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>B<$A0>L<$A0>A<$A0>C<$A0>K<$A0>@@<$A0>F<$A0>I<$A0>R<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+//<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+
+
+// [0x1658A]
+// Level up message -- orig is 19*11 = 0xD1 words
+//#JMP($1658A)
+#W32($127B2)
+//<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+//<$A0><$A3><$A0>Y<$A0>u<$A0>i<$A0>@@<$A0>g<$A0>e<$A0>t<$A0>s<$A0>@@<$A0>1<$A0>0<$A0>@@<$A0>E<$A0>X<$A0>P<$A0>.<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>L<$A0>e<$A0>v<$A0>e<$A0>l<$A0>@@<$A0>u<$A0>p<$A0>!<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>L<$A0>e<$A0>v<$A0>e<$A0>l<$A0>@@<$A0>@@<$A0>@@<$A0>a<$A0>t<$A0>t<$A0>a<$A0>i<$A0>n<$A0>e<$A0>d<$A0>.<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>S<$A0>P<$A0>@@<$A0>w<$A0>e<$A0>n<$A0>t<$A0>@@<$A0>u<$A0>p<$A0>@@<$A0>@@<$A0>@@<$A0>,<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>t<$A0>o<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>p<$A0>t<$A0>s<$A0>.<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+// 20*11 = 0xDC words
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>Y<$A0>u<$A0>i<$A0>@@<$A0>g<$A0>e<$A0>t<$A0>s<$A0>@@<$A0>1<$A0>0<$A0>@@<$A0>E<$A0>X<$A0>P<$A0>.<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>L<$A0>e<$A0>v<$A0>e<$A0>l<$A0>@@<$A0>u<$A0>p<$A0>!<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>L<$A0>e<$A0>v<$A0>e<$A0>l<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>a<$A0>t<$A0>t<$A0>a<$A0>i<$A0>n<$A0>e<$A0>d<$A0>.<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>S<$A0>P<$A0>@@<$A0>w<$A0>e<$A0>n<$A0>t<$A0>@@<$A0>u<$A0>p<$A0>@@<$A0>@@<$A0>@@<$A0>,<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>t<$A0>o<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>p<$A0>t<$A0>s<$A0>.<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+
+//=============================================================================
+// Golf mode in-place tilemaps
+//=============================================================================
+
+#ALIGN(4)
+
+#JMP($11072)
+
+// Course hazard messages
+// [0x11072]
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>W<$A0>A<$A0>T<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>H<$A0>A<$A0>Z<$A0>A<$A0>R<$A0>D<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+<$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>O<$A0>@@<$A0>B<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>B<$A0>U<$A0>N<$A0>K<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>G<$A0>I<$A0>V<$A0>E<$A0>@@<$A0>U<$A0>P<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+#JMP($160CE)
+
+// [0x160CE]
+// Score/status infoboxes
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$80> 
+<$A0><$A3><$A0>Y<$A0>u<$A0>i<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>L<$A0>V<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>S<$A0>P<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>E<$A0>X<$A0>P<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$80> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$80> 
+<$A0><$A3><$A0>P<$A0>L<$A0>Y<$A0>.<$A0>@@<$A0>1<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>P<$A0>L<$A0>Y<$A0>.<$A0>@@<$A0>2<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$80> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+// [0x1620E]
+// Hole infobox
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$00> 
+<$A0><$A3><$A0>N<$A0>O<$A0>.<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>P<$A0>A<$A0>R<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>Y<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+#JMP($1628C)
+
+// [0x1628C]
+// Item use menu (is this even used?)
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>D<$A0>R<$A0>I<$A0>N<$A0>K<$A0>@@<$A0>S<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>D<$A0>R<$A0>I<$A0>N<$A0>K<$A0>@@<$A0>L<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>L<$A0>U<$A0>C<$A0>K<$A0>Y<$A0>@@<$A0>C<$A0>A<$A0>R<$A0>D<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+// moved to non-in-place area
+//#JMP($16456)
+// [0x16456]
+//<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>W<$A0>I<$A0>N<$A0>N<$A0>E<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>Y<$A0>U<$A0>I<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+//<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+//<$A0><$A3><$A0>E<$A0>V<$A0>E<$A0>N<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+
+#JMP($1672C)
+
+// Caddie message -- the mess on the left side is the character portrait.
+// The first line of the message is fixed (x yards to go), while the second
+// varies depending on the context.
+// [0x1672C]
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$C2><$40><$C2><$41><$C2><$42><$C2><$43><$C2><$44><$C2><$45><$C2><$46><$C2><$47><$A1><$03><$A0>#<$A0>1<$A0>8<$A0>@@<$A0>1<$A0>2<$A0>3<$A0>@@<$A0>Y<$A0>@@<$A0>P<$A0>A<$A0>R<$A0>@@<$A0>3<$A8><$A3><$00> 
+<$A0><$A3><$C2><$48><$C2><$49><$C2><$4A><$C2><$4B><$C2><$4C><$C2><$4D><$C2><$4E><$C2><$4F><$A1><$02><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$C2><$50><$C2><$51><$C2><$52><$C2><$53><$C2><$54><$C2><$55><$C2><$56><$C2><$57><$A1><$02><$A0>「<$A0>1<$A0>2<$A0>3<$A0>@@<$A0>y<$A0>a<$A0>r<$A0>d<$A0>s<$A0>@@<$A0>t<$A0>o<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$C2><$58><$C2><$59><$C2><$5A><$C2><$5B><$C2><$5C><$C2><$5D><$C2><$5E><$C2><$5F><$A1><$02><$A0>@@<$A0>t<$A0>h<$A0>e<$A0>@@<$A0>p<$A0>i<$A0>n<$A0>.<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$C2><$60><$C2><$61><$C2><$62><$C2><$63><$C2><$64><$C2><$65><$C2><$66><$C2><$67><$A1><$02><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$C2><$68><$C2><$69><$C2><$6A><$C2><$6B><$C2><$6C><$C2><$6D><$C2><$6E><$C2><$6F><$A1><$02><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$C2><$70><$C2><$71><$C2><$72><$C2><$73><$C2><$74><$C2><$75><$C2><$76><$C2><$77><$A1><$02><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$C2><$78><$C2><$79><$C2><$7A><$C2><$7B><$C2><$7C><$C2><$7D><$C2><$7E><$C2><$7F><$A1><$02><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$A9><$01><$A1><$00><$A1><$00><$A1><$00><$A1><$00><$A1><$00><$A1><$00><$A1><$00><$A1><$01><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00><$00>
+<$A0><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00><$00>
+
+#JMP($16B6A)
+
+// [0x16B6A]
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+<$A0><$A3><$A0>H<$A0>O<$A0>L<$A0>E<$A0>@@<$A0>Y<$A0>D<$A0>S<$A0>@@<$A0>P<$A0>A<$A0>R<$A0>@@<$A0>S<$A0>C<$A0>O<$A0>R<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>S<$A0>C<$A0>O<$A0>R<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>E<$A0>R<$A0>@@<$A0>1<$A0>@@<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>E<$A0>R<$A0>@@<$A0>2<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0><$A3><$A0>H<$A0>O<$A0>L<$A0>E<$A0>@@<$A0>Y<$A0>D<$A0>S<$A0>@@<$A0>P<$A0>A<$A0>R<$A0>@@<$A0>S<$A0>C<$A0>O<$A0>R<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>P<$A0>L<$A0>A<$A0>Y<$A0>E<$A0>R<$A0>@@<$A0>1<$A0>@@<$A0>@@<$A8><$A3><$00> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> <$A0> 
+<$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+#JMP($16EDC)
+
+// [0x16EDC]
+// Also item use menu?
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>U<$A0>S<$A0>E<$A0>.<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>D<$A0>O<$A0>N<$A0>'<$A0>T<$A0>.<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>S<$A0>P<$A0>@@<$A0>L<$A0>O<$A0>W<$A0>.<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+
+// [0x16F90]
+// Item use?
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0><$A4><$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0><$A5><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0><$A5><$A0>@@<$A0>@@<$A0>@@<$A1>G<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0><$A4><$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+#JMP($17626)
+
+// [0x17626]
+// Character names on various menus
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>Y<$A0>u<$A0>i<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>H<$A0>a<$A0>g<$A0>a<$A0>t<$A0>a<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>K<$A0>i<$A0>t<$A0>a<$A0>k<$A0>o<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>D<$A0>i<$A0>b<$A0>o<$A0>t<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>Y<$A0>U<$A0>I<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>G<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>R<$A0>a<$A0>n<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>P<$A0>L<$A0>Y<$A0>.<$A0>1<$A0>@@<$A0>@@<$A0>@@
+<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@
+<$A0>P<$A0>L<$A0>Y<$A0>.<$A0>2<$A0>@@<$A0>@@<$A0>@@
+
+// [0x17746]
+<$A0>U<$A0>P<$A0>@@<$A0>@@
+<$A0>D<$A0>O<$A0>W<$A0>N
+<$A0>D<$A0>O<$A0>W<$A0>N
+<$A0>U<$A0>P<$A0>@@<$A0>@@
+<$A0>E<$A0>V<$A0>E<$A0>N
+<$A0>E<$A0>V<$A0>E<$A0>N
+
+// [0x17776]
+// Alternate EXP message.
+// Don't think this one is used -- story mode battles always seem to give 10 EXP, and
+// use a different message.
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0>@@
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>Y<$A0>u<$A0>i<$A0>,<$A0>@@<$A0>@@<$A0>@@<$A0>e<$A0>x<$A0>p<$A0>@@<$A0>a<$A0>c<$A0>q<$A0>u<$A0>i<$A0>r<$A0>e<$A0>d<$A0>.<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+
+#JMP($17A3C)
+
+// 0x17A3C
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>C<$A0>U<$A0>P<$A0>@@<$A0>I<$A0>N<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>T<$A0>O<$A0>T<$A0>A<$A0>L<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+#JMP($17B2C)
+
+// [0x17B2C]
+// Score display for green
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1><$A0> 
+<$A0><$A3><$A0>#<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>Y<$A0>@@<$A0>@@<$A0>P<$A0>A<$A0>R<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>H<$A0>O<$A0>L<$A0>E<$A0>@@<$A0>I<$A0>N<$A0>@@<$A0>O<$A0>N<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>A<$A0>L<$A0>B<$A0>A<$A0>T<$A0>R<$A0>O<$A0>S<$A0>S<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>E<$A0>A<$A0>G<$A0>L<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>B<$A0>I<$A0>R<$A0>D<$A0>I<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>P<$A0>A<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>B<$A0>O<$A0>G<$A0>E<$A0>Y<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>D<$A0>.<$A0>@@<$A0>B<$A0>O<$A0>G<$A0>E<$A0>Y<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>O<$A0>T<$A0>H<$A0>E<$A0>R<$A0>S<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>T<$A0>O<$A0>T<$A0>A<$A0>L<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$A0><$A3><$A0>A<$A0>V<$A0>E<$A0>R<$A0>A<$A0>G<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3><$00> 
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1><$00> 
+<$A0> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> <$00> 
+
+#JMP($17DB4)
+
+// Terrain infobox on putting screen
+// [0x17DB4]
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>H<$A8><$A3>
+<$A0><$A3><$A0>P<$A0>A<$A0>R<$A0>@@<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+
+#JMP($17ED4)
+
+// [0x17ED4]
+<$A0><$A1><$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A0>##<$A8><$A1>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$B0><$A1><$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B0>##<$B8><$A1>
+<$A0><$A3><$A0>H<$A0>O<$A0>L<$A0>E<$A0>@@<$A0>I<$A0>N<$A0>@@<$A0>O<$A0>N<$A0>E<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>A<$A0>L<$A0>B<$A0>A<$A0>T<$A0>R<$A0>O<$A0>S<$A0>S<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>E<$A0>A<$A0>G<$A0>L<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>B<$A0>I<$A0>R<$A0>D<$A0>I<$A0>E<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>P<$A0>A<$A0>R<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>B<$A0>O<$A0>G<$A0>E<$A0>Y<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+<$A0><$A3><$A0>D<$A0>O<$A0>U<$A0>B<$A0>L<$A0>E<$A0>@@<$A0>B<$A0>O<$A0>G<$A0>E<$A0>Y<$A8><$A3>
+<$A0><$A3><$A0>T<$A0>R<$A0>I<$A0>P<$A0>L<$A0>E<$A0>@@<$A0>B<$A0>O<$A0>G<$A0>E<$A0>Y<$A8><$A3>
+<$A0><$A3><$A0>C<$A0>U<$A0>P<$A0>@@<$A0>I<$A0>N<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A0>@@<$A8><$A3>
+
+
+//=============================================================================
+// Caddie messages
+//=============================================================================
+
+#ALIGN(4)
+
+#VAR(Table3,TABLE)
+#ADDTBL("table/golfer_table_caddie.txt", Table3)
+#ACTIVETBL(Table3)
+
+#JMP($19EC2)
+
+// [0x19EC2]
+ A tee shot.」  [ ]
+               [ ]
+               [ ]
+               [ ]
+
+// [0x19F02]
+ On the fair-  [ ]
+ way. Hang in  [ ]
+ there!」       [ ]
+               [ ]
+
+// [0x19F42]
+ An iron is    [ ]
+ best for the  [ ]
+ rough!」       [ ]
+               [ ]
+
+// [0x19F82]
+ This rough is [ ]
+ deep. Hang    [ ]
+ on!」          [ ]
+               [ ]
+
+// [0x19FC2]
+ Tough luck    [ ]
+ landing in the[ ]
+ bunker. Let's [ ]
+ get on track.」[ ]
+
+// [0x1A002]
+// This message is displayed for terrain types other than the above, e.g.
+// if the ball settles on a cliff.
+// While it's blank in the original game, that leaves the opening quotation
+// mark from the first part of the message unterminated, which looks sloppy.
+ ...」          [ ]
+               [ ]
+               [ ]
+               [ ]
+
+

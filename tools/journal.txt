@@ -1,0 +1,70 @@
+*. Sticky notes
+
+Free plug: SEKAS (68k assembler) by Twilight Translations. Not available yet.
+
+; ----------------------------------------------------------------------------
+
+Script is raw 8-bit. Very plain. Uses a local 16-bit offset table to grab text.
+But it MUST be 16-bit aligned as the scripting engine reads data this way.
+
+Be sure to check the Atlas pointers for the English table address ($80000) and
+adjust them accordingly to simulate offset pointers.
+
+A higher-level language in the game engine prints the '[/]' speaker tiles and
+changes the text color. No need to know.
+
+; ----------------------------------------------------------------------------
+
+The scripter reads in 16-bit chunks. Then scans a code table which seperates the
+font from codes ($AF6E).
+
+Menus and window data are stored as 16-bit NT values.
+
+Intro is stored as 8-bit tilemap data. But a table format is used.
+<32-bit ptr><16-bit vram><16-bit width><16-bit height>.
+So you'll have to fix the pointers.
+
+; ----------------------------------------------------------------------------
+
+Font is 1-bpp RAW @ 229A2.
+
+Bitmaps are stored as 4-bpp RLE compressed.
+
+; ============================================================================
+; ############################################################################
+; ============================================================================
+
+Atlas 1.06 is modified (nothing new since 'Super Robot Wars EX')
+
+> #FILL( int stop_address, int file_byte )		- pads up to stop address
+  #FILL( int start, stop, int file_byte )		- pads address range
+  #FILL( int start, stop, int file_byte, string file )	- pads address range IN FILE
+
+  #WARN( int warn_address )				- OKAY/BARF if PC counter >= warn_address
+
+  #SAVEPC( string file_name )				- writes PC to file
+  #LOADPC( string file_name )				- loads PC from file
+
+  #INSERT( string file_name )				- inserts binary file at current PC
+
+  MSB16,MSB24,MSB32,GB4xxx				- addressing modes
+
+  #SETINDEX( int index_number, int size )		- init the index numbers
+  #WRITEINDEX( int address, int index_bump )		- writes index numbers to address, # bytes
+							  and auto-bumps the index #
+  #WRITEINDEX( int addr, int index_bump, string file )	- writes index number to address IN FILE
+
+  #SAVEINDEX( string file_name )			- writes INDEX # to file
+  #LOADINDEX( string file_name )			- loads INDEX # from file
+
+  #ALIGN( int byte_count )                      	- does file alignment (1,2,3,4)
+
+  #W08BYTE( int address, int byte )			- writes byte to address (no JMP)
+  #W08BYTE( int addr, int byte, string file )		- writes byte to address IN FILE (no JMP)
+
+  #EMBCLEAR()						- erases all embedded pointers
+
+  #SAVEPTRTABLE( PTRTABLE table, string file_name )	- writes PTRTABLE address to file
+  #LOADPTRTABLE( PTRTABLE table, string file_name )	- loads PTRTABLE address from file 
+
+  #WRITEOFS( PTRTABLE table, int offset )		- writes POINTER at an offset amount (from the table start)

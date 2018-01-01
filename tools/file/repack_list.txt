@@ -1,0 +1,3 @@
+// <src address> <out file>
+
+0002F0D2 binary/title.bin insert/title.bin

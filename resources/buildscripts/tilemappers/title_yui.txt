@@ -1,0 +1,58 @@
+#******************************************************************************
+# Title screen tilemap generator script
+#******************************************************************************
+
+[Properties]
+palette=../resources/pal/yui_pal_title.bin
+dest=out/precmp/title_grp_2.bin
+
+# This is the load address in the original game. The new title graphics
+# require more space, so I took the easy way out and just relocated them
+# to a new spot in VRAM.
+#loadAddr=0xA2
+#maxTiles=0xFA
+
+loadAddr=0x240
+#minTiles=0x0
+maxTiles=0x100
+#blacklist=
+
+#******************************************************************************
+# Main layout
+#******************************************************************************
+
+[Tilemap04]
+source=../resources/grp_mapped/title/trans/0x43fe8.png
+dest=out/maps_raw/title_map_4.bin
+priority=0
+palette=2
+noflip=1
+
+[Tilemap05]
+source=../resources/grp_mapped/title/trans/0x44020.png
+dest=out/maps_raw/title_map_5.bin
+priority=0
+palette=2
+noflip=1
+
+[Tilemap06]
+source=../resources/grp_mapped/title/trans/0x44048.png
+dest=out/maps_raw/title_map_6.bin
+priority=0
+palette=2
+noflip=1
+
+[Tilemap07]
+source=../resources/grp_mapped/title/trans/0x44070.png
+dest=out/maps_raw/title_map_7.bin
+priority=0
+palette=2
+noflip=1
+
+[Tilemap08]
+source=../resources/grp_mapped/title/trans/0x44098.png
+dest=out/maps_raw/title_map_8.bin
+priority=0
+palette=2
+noflip=1
+
